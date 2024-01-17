@@ -21,8 +21,8 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def test():
-    return " Sparkilng Minds Kids Club..."
+def index():
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

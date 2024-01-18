@@ -74,41 +74,67 @@
       <!-- Spinner End -->
 
       <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="{{ url_for('index') }}" class="navbar-brand">
-            <h3 class="m-0 text-primary">
-                <img src="{{ url_for('static', filename='img/logo.png')}}"  class=" logo me-3" />Sparkilng Minds Club
-            </h3>
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
-            data-bs-target="#navbarCollapse" >
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav mx-auto">
-                        <a href="{{ url_for('index') }}" class="nav-item nav-link active">Home</a>
-                        <a href="#" class="nav-item nav-link">About Us</a>
-                        <a href="#" class="nav-item nav-link">Courses</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Features</a>
-                            <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                                <a href="#" class="dropdown-item">Our Facilities</a>
-                                <a href="#" class="dropdown-item">Gallery</a>
-                                <a href="#" class="dropdown-item">Teachers</a>
-                                <a href="#" class="dropdown-item">Testimonial</a>
-                                <a href="#" class="dropdown-item">404 Error</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                </div>
-                <a href="#" class="btn btn-primary rounded-pill px-3 d-none d-lg-block dropdown-toggle"
-                data-bs-toggle="dropdown"><i class="fa fa-user ms-3"></i></a>
-                <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                    <a href="#" class="dropdown-item">Singin</a>
-                    <a href="#" class="dropdown-item">Register</a>
-                </div>
+      <nav
+        class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0"
+      >
+        <a href="{{ url_for('index') }}" class="navbar-brand">
+          <h3 class="m-0" style="color: #2815b9">
+            <img
+              src="{{ url_for('static', filename='img/logo.png')}}"
+              class="logo me-3"
+            />Sparkilng Minds Club
+          </h3>
+        </a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav mx-auto">
+            <a href="{{ url_for('index') }}" class="nav-item nav-link active"
+              >Home</a
+            >
+            <a href="#" class="nav-item nav-link">About Us</a>
+            <a href="#" class="nav-item nav-link">Courses</a>
+            <div class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                >Features</a
+              >
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+              >
+                <a href="#" class="dropdown-item">Our Facilities</a>
+                <a href="#" class="dropdown-item">Gallery</a>
+                <a href="#" class="dropdown-item">Teachers</a>
+                <a href="#" class="dropdown-item">Testimonial</a>
+              </div>
             </div>
-        </nav>
+            <a href="#" class="nav-item nav-link">Contact Us</a>
+          </div>
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="btn btn-primary rounded-pill px-3 d-none d-lg-block dropdown-toggle"
+              data-bs-toggle="dropdown"
+              ><i class="fa fa-user ms-3"></i
+            ></a>
+            <div
+              class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+            >
+              <a href="#" class="dropdown-item">Singin</a>
+              <hr class="dropdown-divider" />
+              <a href="#" class="dropdown-item">Register</a>
+            </div>
+          </div>
+        </div>
+      </nav>
       <!-- Navbar End -->
 
       <!-- Carousel Start -->
@@ -117,23 +143,25 @@
           <div class="owl-carousel-item position-relative">
             <img
               class="img-fluid"
-              src="{{ url_for('static', filename='img/carousel-1.jpg') }}"
+              src="{{ url_for('static', filename='img/bg_1.jpg') }}"
               alt=""
             />
             <div
               class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
-              style="background: rgba(0, 0, 0, 0.2)"
+              style="background: rgba(0, 0, 0, 0.05)"
             >
               <div class="container">
                 <div class="row justify-content-start">
                   <div class="col-10 col-lg-8">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">
+                    <h2
+                      class="display-2 font-secondary animated slideInDown mb-4"
+                    >
                       The Best Club For Your Child
-                    </h1>
-                    <p class="fs-5 fw-medium text-white mb-4 pb-2">
-                      Vero elitr justo clita lorem. Ipsum dolor at sed stet sit
-                      diam no. Kasd rebum ipsum et diam justo clita et kasd
-                      rebum sea elitr.
+                    </h2>
+                    <p class="fs-5 fw-medium text-dark mb-4 pb-2">
+                      If you are looking for a kids club that can help your
+                      child learn, play, and grow, then Sparkling Minds Kids
+                      Club is the perfect place for you
                     </p>
                     <a
                       href=""
@@ -153,7 +181,7 @@
           <div class="owl-carousel-item position-relative">
             <img
               class="img-fluid"
-              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+              src="{{ url_for('static', filename='img/bg_2.jpeg') }}"
               alt=""
             />
             <div
@@ -163,13 +191,14 @@
               <div class="container">
                 <div class="row justify-content-start">
                   <div class="col-10 col-lg-8">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">
+                    <h2
+                      class="display-2 font-secondary animated slideInDown mb-4"
+                    >
                       Make A Brighter Future For Your Child
-                    </h1>
-                    <p class="fs-5 fw-medium text-white mb-4 pb-2">
-                      Vero elitr justo clita lorem. Ipsum dolor at sed stet sit
-                      diam no. Kasd rebum ipsum et diam justo clita et kasd
-                      rebum sea elitr.
+                    </h2>
+                    <p class="fs-5 fw-medium text-white mb-5 pb-2">
+                      We offer a variety of activities and courses that are both
+                      educational and enjoyable.
                     </p>
                     <a
                       href=""

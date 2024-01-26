@@ -1,4 +1,4 @@
-# <img src="../Sparkling-Minds-Kids-Club/static/img/logo-2.png" width="150" height="150">Sparkling Minds Club
+# <img src="/static/img/logo-2.png" width="150" height="150">Sparkling Minds Club
 
 ...
 
@@ -34,6 +34,7 @@ The live link can be found here: [Live Site - Sparkilng Minds Club](https://spar
     - [Run Locally](#run-locally)
     - [Fork Project](#fork-project)
 - [Credits](#credits)
+- [Acknowledgments](#acknowledgments)
 
 # User Experience Design
 
@@ -109,3 +110,6 @@ The live link can be found here: [Live Site - Sparkilng Minds Club](https://spar
 
 
 # Credits
+
+# Acknowledgments
+

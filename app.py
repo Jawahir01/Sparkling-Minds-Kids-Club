@@ -44,18 +44,23 @@ def register():
             "last-name": request.form.get("last-name").lower(),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
-            "security-question": list(
-                request.form.get("security-question").lower()),
+            "security-question": request.form.get("security-question").lower(),
             "security-answer": request.form.get("security-answer").lower()
         }
         mongo.db.users.insert_one(register)
 
         # put the new user into 'session' cookie
-        session["user"] = request.form.get("username").lower()
+        session["user"] = request.form.get("user-name").lower()
         flash("You have been Successful! Registered")
-        return redirect(url_for("profile", username=session["user"]))
+        return render_template("index.html")
 
     return render_template("register.html")
+
+
+# User signin route
+@app.route("/signin")
+def signin():
+    return render_template("signin.html")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,4 @@
 {% extends "index.html" %} {% block content %}
-
 <!-- Register Start -->
 <div class="container-xxl py-5">
   <div class="container">
@@ -15,7 +14,10 @@
       <div class="row g-0">
         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
           <div class="h-100 d-flex flex-column justify-content-center p-5">
-            <p class="mb-4">Have an account? <a href="#">log in</a>here.</p>
+            <p class="mb-4">
+              Have an account already?
+              <a href="{{ url_for('signin') }}">Sign in here.</a>
+            </p>
             <form method="POST" action="{{ url_for('register') }}">
               <div class="row g-3">
                 <div class="col-sm-6">

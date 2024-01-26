@@ -54,6 +54,7 @@
       href="{{ url_for('static', filename='css/style.css') }}"
       rel="stylesheet"
     />
+    {% block styles %} {% endblock %}
   </head>
 
   <body>
@@ -72,6 +73,8 @@
         </div>
       </div>
       <!-- Spinner End -->
+
+      {% block nav %}
 
       <!-- Navbar Start -->
       <nav
@@ -138,7 +141,7 @@
         </div>
       </nav>
       <!-- Navbar End -->
-
+      {% endblock %}
       <!-- Carousel Start -->
       <div class="container-fluid p-0 mb-5">
         <div class="owl-carousel header-carousel position-relative">
@@ -257,6 +260,8 @@
         </div>
       </div>
       <!-- Carousel End -->
+
+      <main class="container">{% block content %} {% endblock %}</main>
 
       <!-- About Us Start -->
       <div class="container-xxl py-5">
@@ -1135,5 +1140,6 @@
 
     <!-- Template Javascript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %} {% endblock %}
   </body>
 </html>

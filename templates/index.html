@@ -130,7 +130,9 @@
             >
               <a href="#" class="dropdown-item">Singin</a>
               <hr class="dropdown-divider" />
-              <a href="#" class="dropdown-item">Register</a>
+              <a href="{{ url_for('register') }}" class="dropdown-item"
+                >Register</a
+              >
             </div>
           </div>
         </div>
@@ -892,7 +894,102 @@
         </div>
       </div>
       <!-- Teachers End -->
-<<<<<<< HEAD
+
+      <!-- Testimonial Start -->
+      <div class="container-xxl py-5">
+        <div class="container">
+          <div
+            class="text-center mx-auto mb-5 wow fadeInUp"
+            data-wow-delay="0.1s"
+            style="max-width: 600px"
+          >
+            <h1 class="mb-3">Our Clients Say!</h1>
+            <p></p>
+          </div>
+          <div
+            class="owl-carousel testimonial-carousel wow fadeInUp"
+            data-wow-delay="0.1s"
+          >
+            <div class="testimonial-item bg-light rounded p-5">
+              <p class="fs-5">
+                “Our daughter attended preschool at Kiddy and absolutely loved
+                it. Everyone at the school was warm, loving and highly
+                attentive. We felt the staff really got to know our daughter and
+                really cared about her development. It was an experience we'll
+                never forget.”
+              </p>
+              <div
+                class="d-flex align-items-center bg-white me-n5"
+                style="border-radius: 50px 0 0 50px"
+              >
+                <img
+                  class="img-fluid flex-shrink-0 rounded-circle"
+                  src="{{ url_for('static', filename='img/testimonial-1.jpg') }}"
+                  style="width: 90px; height: 90px"
+                />
+                <div class="ps-3">
+                  <h3 class="mb-1">Madelaine T.</h3>
+                  <span>Mother</span>
+                </div>
+                <i
+                  class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"
+                ></i>
+              </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-5">
+              <p class="fs-5">
+                “My son was went to Sparkilng Minds Club for two years, and also
+                went to the summer camp. He looked forward to club every week,
+                and especially loved learning about the holidays. The teachers
+                are incredible, especially Katherine and Justine.”
+              </p>
+              <div
+                class="d-flex align-items-center bg-white me-n5"
+                style="border-radius: 50px 0 0 50px"
+              >
+                <img
+                  class="img-fluid flex-shrink-0 rounded-circle"
+                  src="{{ url_for('static', filename='img/testimonial-2.jpg') }}"
+                  style="width: 90px; height: 90px"
+                />
+                <div class="ps-3">
+                  <h3 class="mb-1">Ashwin W.</h3>
+                  <span>Father</span>
+                </div>
+                <i
+                  class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"
+                ></i>
+              </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-5">
+              <p class="fs-5">
+                As a former teacher, I can say with confidence that the academic
+                level here at Sparkilng Minds is excellent. The teachers are
+                well-educated and warm, creating the perfect learning
+                environment for young kids. I warmly recommend.”
+              </p>
+              <div
+                class="d-flex align-items-center bg-white me-n5"
+                style="border-radius: 50px 0 0 50px"
+              >
+                <img
+                  class="img-fluid flex-shrink-0 rounded-circle"
+                  src="{{ url_for('static', filename='img/testimonial-3.jpg') }}"
+                  style="width: 90px; height: 90px"
+                />
+                <div class="ps-3">
+                  <h3 class="mb-1">Samuel G.</h3>
+                  <span>Former Teacher & Father</span>
+                </div>
+                <i
+                  class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial End -->
 
       <!-- Footer Start -->
       <div
@@ -990,11 +1087,15 @@
               <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                 &copy;
                 <a href="#">
-                    <img src="{{ url_for('static', filename='img/logo-2.png')}}" />
-                    Sparkilng Minds Club</a>, All
-                Right Reserved. Designed By
-                <a class="border-bottom" href="https://htmlcodex.com"
-                target="_blank"
+                  <img
+                    src="{{ url_for('static', filename='img/logo-2.png')}}"
+                  />
+                  Sparkilng Minds Club</a
+                >, All Right Reserved. Designed By
+                <a
+                  class="border-bottom"
+                  href="https://htmlcodex.com"
+                  target="_blank"
                   >HTML Codex</a
                 >
                 <br />Distributed By:
@@ -1005,11 +1106,13 @@
                   >ThemeWagon</a
                 >
               </div>
-            <div class="col-md-6 text-center text-md-end">
+              <div class="col-md-6 text-center text-md-end">
                 <div class="footer-dev">
-                    <a class="border-bottom" href="#" target="_blank">Meet the Site Developer</a>
+                  <a class="border-bottom" href="#" target="_blank"
+                    >Meet the Site Developer</a
+                  >
                 </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1020,104 +1123,7 @@
       <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
         ><i class="bi bi-arrow-up"></i
       ></a>
-=======
->>>>>>> e42bf757cec3a9f9885bdabf53ad71ea33594580
     </div>
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-      <div class="container">
-        <div
-          class="text-center mx-auto mb-5 wow fadeInUp"
-          data-wow-delay="0.1s"
-          style="max-width: 600px"
-        >
-          <h1 class="mb-3">Our Clients Say!</h1>
-          <p></p>
-        </div>
-        <div
-          class="owl-carousel testimonial-carousel wow fadeInUp"
-          data-wow-delay="0.1s"
-        >
-          <div class="testimonial-item bg-light rounded p-5">
-            <p class="fs-5">
-              “Our daughter attended preschool at Kiddy and absolutely loved it.
-              Everyone at the school was warm, loving and highly attentive. We
-              felt the staff really got to know our daughter and really cared
-              about her development. It was an experience we'll never forget.”
-            </p>
-            <div
-              class="d-flex align-items-center bg-white me-n5"
-              style="border-radius: 50px 0 0 50px"
-            >
-              <img
-                class="img-fluid flex-shrink-0 rounded-circle"
-                src="{{ url_for('static', filename='img/testimonial-1.jpg') }}"
-                style="width: 90px; height: 90px"
-              />
-              <div class="ps-3">
-                <h3 class="mb-1">Madelaine T.</h3>
-                <span>Mother</span>
-              </div>
-              <i
-                class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"
-              ></i>
-            </div>
-          </div>
-          <div class="testimonial-item bg-light rounded p-5">
-            <p class="fs-5">
-              “My son was went to Sparkilng Minds Club for two years, and also
-              went to the summer camp. He looked forward to club every week, and
-              especially loved learning about the holidays. The teachers are
-              incredible, especially Katherine and Justine.”
-            </p>
-            <div
-              class="d-flex align-items-center bg-white me-n5"
-              style="border-radius: 50px 0 0 50px"
-            >
-              <img
-                class="img-fluid flex-shrink-0 rounded-circle"
-                src="{{ url_for('static', filename='img/testimonial-2.jpg') }}"
-                style="width: 90px; height: 90px"
-              />
-              <div class="ps-3">
-                <h3 class="mb-1">Ashwin W.</h3>
-                <span>Father</span>
-              </div>
-              <i
-                class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"
-              ></i>
-            </div>
-          </div>
-          <div class="testimonial-item bg-light rounded p-5">
-            <p class="fs-5">
-              As a former teacher, I can say with confidence that the academic
-              level here at Sparkilng Minds is excellent. The teachers are
-              well-educated and warm, creating the perfect learning environment
-              for young kids. I warmly recommend.”
-            </p>
-            <div
-              class="d-flex align-items-center bg-white me-n5"
-              style="border-radius: 50px 0 0 50px"
-            >
-              <img
-                class="img-fluid flex-shrink-0 rounded-circle"
-                src="{{ url_for('static', filename='img/testimonial-3.jpg') }}"
-                style="width: 90px; height: 90px"
-              />
-              <div class="ps-3">
-                <h3 class="mb-1">Samuel G.</h3>
-                <span>Former Teacher & Father</span>
-              </div>
-              <i
-                class="fa fa-quote-right fa-3x text-primary ms-auto d-none d-sm-flex"
-              ></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Testimonial End -->
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

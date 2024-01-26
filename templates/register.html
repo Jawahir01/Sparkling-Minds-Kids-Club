@@ -21,7 +21,7 @@
                 <div class="col-sm-6">
                   <div class="form-floating">
                     <input
-                      name="username"
+                      name="user-name"
                       type="text"
                       class="form-control border-0"
                       id="username"
@@ -29,7 +29,7 @@
                       aria-label="username"
                       minlength="4"
                       maxlength="15"
-                      pattern="^[a-zA-Z0-9]{4,15}$"
+                      pattern="^[a-z0-9]{4,15}$"
                       required
                     />
                     <label for="username">User Name</label>
@@ -38,6 +38,7 @@
                 <div class="col-sm-6">
                   <div class="form-floating">
                     <input
+                      name="first-name"
                       type="text"
                       class="form-control border-0"
                       id="firstname"
@@ -54,6 +55,7 @@
                 <div class="col-sm-6">
                   <div class="form-floating">
                     <input
+                      name="last-name"
                       type="text"
                       class="form-control border-0"
                       id="lastname"
@@ -83,6 +85,7 @@
                 <div class="col-12">
                   <div class="form-floating">
                     <input
+                      name="password"
                       type="password"
                       class="form-control border-0"
                       id="password"
@@ -109,7 +112,7 @@
                       <select
                         class="col-12"
                         id="security_question"
-                        name="security_question"
+                        name="security-question"
                         required
                       >
                         <option value="">-- Select a Question --</option>
@@ -132,7 +135,7 @@
                         class="col-sm-6"
                         type="text"
                         id="security_answer"
-                        name="security_answer"
+                        name="security-answer"
                         required
                       />
                     </div>

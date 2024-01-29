@@ -266,6 +266,11 @@ h2,
     color: rgba(255, 255, 255, .5);
 }
 
+/*** Flash Messages ***/
+
+.message-container h6 {
+    line-height: 2;
+}
 
 /*** Facility ***/
 .facility-item .facility-icon {

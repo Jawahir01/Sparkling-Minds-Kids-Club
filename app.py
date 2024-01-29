@@ -58,8 +58,32 @@ def register():
 
 
 # User signin route
-@app.route("/signin")
+@app.route("/signin", methods=["GET", "POST"])
 def signin():
+    if request.method == "POST":
+        # check if username exists in db
+
+        existing_user = mongo.db.users.find_one(
+            {"user-name": request.form.get("user-name").lower()})
+
+        if existing_user:
+
+            # ensure hashed password matches user input
+            if check_password_hash(
+                    existing_user["password"], request.form.get("password")):
+                session["user"] = request.form.get("user-name").lower()
+                flash("Welcome, {}".format(request.form.get("user-name")))
+
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("signin"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Password")
+            return redirect(url_for("signin"))
+
     return render_template("signin.html")
 
 

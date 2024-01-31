@@ -2,17 +2,12 @@
 
 <div class="container-xxl py-5">
   <div class="container">
-    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-      <img
-        class="img-fluid"
-        src="{{ url_for('static', filename='img/bg_4.jpg') }}"
-        alt=""
-      />
-      <div
-        class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
-        style="background: rgba(158, 146, 146, 0)"
-      >
-        <h3 class="mb-3">{{ username }}'s Profile</h3>
+    <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+      <h3 class="mb-3">{{ username }}'s Profile</h3>
+      <div class="col-2" style="position: absolute; left: 70%">
+        <button class="btn btn-primary w-80 py-3" type="submit">
+          <i class="fa fa-plus"></i> Add Child
+        </button>
       </div>
     </div>
   </div>

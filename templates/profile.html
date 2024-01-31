@@ -5,7 +5,14 @@
     <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
       <h3 class="mb-3">{{ username }}'s Profile</h3>
       <div class="col-2" style="position: absolute; left: 70%">
-        <button class="btn btn-primary w-80 py-3" type="submit">
+        <button
+          class="btn btn-primary w-80 py-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseExample"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
           <i class="fa fa-plus"></i> Add Child
         </button>
       </div>
@@ -13,4 +20,123 @@
   </div>
 </div>
 
-{% endblock %}
+<!-- Child Form -->
+<div class="container-xxl py-5">
+  <div class="container">
+        <div class="collapse " id="collapseExample">
+          <form class="card card-body bg-light rounded" method="POST" action="#">
+                <div class="row g-2">
+              <label for="child_name" class="form-label text-dark"
+                >Child Name:
+              </label>
+              <div class="col-3">
+                <input
+                  type="text"
+                  id="childfname"
+                  name="childfname"
+                  class="form-control validate"
+                  placeholder="First name"
+                  aria-label="First name"
+                  minlength="3"
+                  maxlength="15"
+                  pattern="^[A-Za-z]{1,15}$"
+                  required
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="text"
+                  id="childlname"
+                  name="childlname"
+                  class="form-control validate"
+                  placeholder="Last name"
+                  aria-label="Last name"
+                  minlength="3"
+                  maxlength="15"
+                  pattern="^[A-Za-z]{1,15}$"
+                  required
+                />
+              </div>
+              <label for="date_of_birth" class="form-label"
+                >Date of Birth:
+              </label>
+              <div class="col-auto">
+                <input
+                  type="date"
+                  id="date_of_birth"
+                  name="date_of_birth"
+                  class="form-control"
+                  placeholder="DD/MM/YYYY"
+                  aria-label="date-of-birth"
+                  class="validate"
+                  required
+                />
+              </div>
+              <label for="school_name" class="form-label">School Name: </label>
+              <div class="col-6">
+                <input
+                  type="text"
+                  id="school_name"
+                  name="school_name"
+                  class="form-control"
+                  placeholder="School Name"
+                  aria-label="School Name"
+                  class="validate"
+                  required
+                />
+              </div>
+              <label for="school_year" class="form-label">School Year: </label>
+              <div class="col-4">
+                <select
+                  class="form-select"
+                  id="school_year"
+                  name="school_year"
+                  aria-label="Default select example"
+                  class="validate"
+                  required
+                >
+                  <option selected>Choose your Child's Academic Year</option>
+                  <option value="1">Year 1</option>
+                  <option value="2">Year 2</option>
+                  <option value="3">Year 3</option>
+                  <option value="4">Year 4</option>
+                  <option value="5">Year 5</option>
+                  <option value="6">Year 6</option>
+                  <option value="7">Year 7</option>
+                  <option value="8">Year 8</option>
+                  <option value="9">Year 9</option>
+                </select>
+              </div>
+              <label for="child_med_conditions" class="form-label">
+                Does your child suffer from any medical conditions/allergies
+                that the club should be aware of?
+              </label>
+              <div class="col">
+                <textarea
+                  id="child_med_conditions"
+                  name="child_med_conditions"
+                  class="form-control"
+                  placeholder="Please explain here"
+                  aria-label="With textarea"
+                  class="validate"
+                  required
+                >
+                </textarea>
+              </div>
+              <div class="col">
+                <button type="submit" class="btn btn-outline-success">
+                  Submit
+                </button>
+              </div>
+            </div>
+        </div>
+          </form>
+        </div>
+      
+      </div>
+    </div>
+    <br />
+
+    {% endblock %}
+  </div>
+</div>

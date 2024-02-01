@@ -92,9 +92,13 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    # List the courses for the child to choose from
+    child_choice = list(mongo.db.courses.find())
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        children = list(mongo.db.kids.find({'username': username}))
+        return render_template("profile.html", username=username,
+                               children=children, child_choice=child_choice)
 
 
 if __name__ == "__main__":

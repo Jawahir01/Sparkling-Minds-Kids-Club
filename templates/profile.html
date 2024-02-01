@@ -25,11 +25,15 @@
   <div class="container">
         <div class="collapse " id="collapseExample">
           <form class="card card-body bg-light rounded" method="POST" action="#">
-                <div class="row g-2">
-              <label for="child_name" class="form-label text-dark"
-                >Child Name:
-              </label>
-              <div class="col-3">
+                <div class="row g-3">
+                    <!-- Child First Name -->
+                    <div class="row g-2">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <label for="child_name" class="form-label text-dark"
+                            >Child Name:
+                        </label>
+                    </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
                 <input
                   type="text"
                   id="childfname"
@@ -43,7 +47,8 @@
                   required
                 />
               </div>
-              <div class="col-3">
+              <!-- Child Last Name -->
+              <div class="col-lg-4 col-md-12 col-sm-12">
                 <input
                   type="text"
                   id="childlname"
@@ -57,10 +62,14 @@
                   required
                 />
               </div>
-              <label for="date_of_birth" class="form-label"
-                >Date of Birth:
-              </label>
-              <div class="col-auto">
+              <!-- Child Date of Birth -->
+              <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="date_of_birth" class="form-label text-dark"
+                    >Date of Birth:
+                </label>
+                </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
                 <input
                   type="date"
                   id="date_of_birth"
@@ -72,8 +81,12 @@
                   required
                 />
               </div>
-              <label for="school_name" class="form-label">School Name: </label>
-              <div class="col-6">
+            </div>
+              <!-- Child's School Name -->
+            <div class="row g-2">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+              <label for="school_name" class="form-label text-dark">School Name: </label></div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
                 <input
                   type="text"
                   id="school_name"
@@ -84,9 +97,12 @@
                   class="validate"
                   required
                 />
-              </div>
-              <label for="school_year" class="form-label">School Year: </label>
-              <div class="col-4">
+              </div></div>
+              <!-- Child's School Year -->
+            <div class="row g-2">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+              <label for="school_year" class="form-label text-dark">School Year: </label></div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
                 <select
                   class="form-select"
                   id="school_year"
@@ -95,7 +111,7 @@
                   class="validate"
                   required
                 >
-                  <option selected>Choose your Child's Academic Year</option>
+                  <option selected>Choose Your Child's Academic Year</option>
                   <option value="1">Year 1</option>
                   <option value="2">Year 2</option>
                   <option value="3">Year 3</option>
@@ -106,12 +122,29 @@
                   <option value="8">Year 8</option>
                   <option value="9">Year 9</option>
                 </select>
-              </div>
-              <label for="child_med_conditions" class="form-label">
+              </div></div>
+            <!-- Child's Course Choise -->
+            <div class="row g-2">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+            <label for="child_choice" class="form-label text-dark">Choose Your Child's interests Course/Sport:
+            </label></div>
+            <div class="col-lg-4 col-md-12 col-sm-12" id="child_choice">
+                {% for choice in child_choice %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="child_choice" type="checkbox" id="{{ choice }}"
+                        value="{{ child_choice.course_name }}" />
+                    <label class="form-check-label" for="{{ choice }}">{{ choice.course_name }}</label>
+                </div>
+                {% endfor %}
+            </div></div>
+            <!-- Child's Medical Condetion -->
+            <div class="row g-2">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+              <label for="child_med_conditions" class="form-label text-dark">
                 Does your child suffer from any medical conditions/allergies
                 that the club should be aware of?
-              </label>
-              <div class="col">
+              </label></div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
                 <textarea
                   id="child_med_conditions"
                   name="child_med_conditions"
@@ -122,8 +155,9 @@
                   required
                 >
                 </textarea>
-              </div>
-              <div class="col">
+              </div></div>
+              <!-- Submit Button -->
+              <div class="col-lg-3 col-md-12 col-sm-12">
                 <button type="submit" class="btn btn-outline-success">
                   Submit
                 </button>

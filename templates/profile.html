@@ -194,4 +194,53 @@
 </div>
 <br />
 
+<!-- Display Child Details -->
+<div class="container-xxl py-5">
+  <div class="container">
+    {% for child in children %}
+    <div class="card mb-3" style="max-width: 540px">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <div class="row g-0">
+            <img
+              src="{{ url_for('static', filename='img/photo9.jpg') }}"
+              class="img-fluid rounded-circle col-md-12 col-sm-12"
+              alt="avatar1"
+            />
+          </div>
+          <div class="row g-0">
+            <h4 class="card-title py-3 text-center">
+              {{ child.childfname }} {{ child.childlname }}
+            </h4>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card_title text-center">Child's Informations</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <strong>Date of Birth: </strong>{{ child.date_of_birth }}
+              </li>
+              <li class="list-group-item">
+                <strong>School Name: </strong>{{ child.school_name }}
+              </li>
+              <li class="list-group-item">
+                <strong>School Year: </strong>{{ child.school_year }}
+              </li>
+              <li class="list-group-item">
+                <strong>Course/Sport: </strong>{{ child.child_choice }}
+              </li>
+              <li class="list-group-item">
+                <strong>Medical Conditions: </strong>{{
+                child.child_med_conditions }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor%}
+  </div>
+</div>
+
 {% endblock %}

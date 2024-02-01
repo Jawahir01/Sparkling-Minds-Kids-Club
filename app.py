@@ -101,6 +101,32 @@ def profile(username):
                                children=children, child_choice=child_choice)
 
 
+# Add Child route
+@app.route("/add_child", methods=["GET", "POST"])
+def add_child():
+    # insert a child to DB based on user's session
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    # Add new child to the user's list
+    if request.method == "POST":
+        child = {
+            "username": session["user"],
+            "childfname": request.form.get("childfname"),
+            "childlname": request.form.get("childlname"),
+            "date_of_birth": request.form.get("date_of_birth"),
+            "school_name": request.form.get("school_name"),
+            "school_year": request.form.get("school_year"),
+            "child_choice": list(request.form.get("child_choice")),
+            "child_med_conditions": request.form.get("child_med_conditions")
+        }
+        mongo.db.kids.insert_one(child)
+        flash("Your Child hass been added successfully!")
+
+    children = list(mongo.db.kids.find({'username': username}))
+    return render_template("profile.html", children=children)
+
+
 if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),

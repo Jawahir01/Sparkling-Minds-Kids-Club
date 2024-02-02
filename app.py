@@ -127,6 +127,32 @@ def add_child():
     return render_template("profile.html", children=children)
 
 
+# Edit Child route
+@app.route("/edit_child/<kids_id>", methods=["GET", "POST"])
+def edit_child(kids_id):
+
+    # update child details
+    if request.method == "POST":
+        update = {
+            "username": session["user"],
+            "childfname": request.form.get("childfname"),
+            "childlname": request.form.get("childlname"),
+            "date_of_birth": request.form.get("date_of_birth"),
+            "school_name": request.form.get("school_name"),
+            "school_year": request.form.get("school_year"),
+            "child_choice": list(request.form.get("child_choice")),
+            "child_med_conditions": request.form.get("child_med_conditions")
+        }
+
+        mongo.db.kids.update({"_id": ObjectId(kids_id)}, update)
+        flash("Your Child's Details have been Successfully Updated")
+
+    child = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
+    children = list(mongo.db.kids.find({'username': username}))
+    return render_template("profile.html", child=child, children=children)
+
+
+# Signout route
 @app.route("/signout")
 def signout():
     # remove user from session cookie

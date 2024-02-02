@@ -1,6 +1,6 @@
 {% extends "index.html" %} {% block content %}
 
-<div class="container-xxl py-5">
+<div class="container-xxl py-2">
   <div class="container">
     <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
       <h3 class="mb-3">{{ username }}'s Profile</h3>
@@ -21,7 +21,7 @@
 </div>
 
 <!-- Child Form -->
-<div class="container-xxl py-5">
+<div class="container-xxl py-2">
   <div class="container">
     <div class="collapse" id="collapseExample">
       <form
@@ -195,7 +195,7 @@
 <br />
 
 <!-- Display Child Details -->
-<div class="container-xxl py-5">
+<div class="container-xxl py-2">
   <div class="container">
     {% for child in children %}
     <div class="card mb-3" style="max-width: 540px">
@@ -209,14 +209,14 @@
             />
           </div>
           <div class="row g-0">
-            <h4 class="card-title py-3 text-center">
+            <h5 class="card-title py-4 text-center">
               {{ child.childfname }} {{ child.childlname }}
-            </h4>
+            </h5>
           </div>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card_title text-center">Child's Informations</h5>
+            <h4 class="card_title py-3 text-center">Child's Informations</h4>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <strong>Date of Birth: </strong>{{ child.date_of_birth }}
@@ -236,6 +236,20 @@
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+      <!-- Edit Button /trigger modal/ -->
+      <div class="row g-0">
+        <div class="col-12 d-md-flex justify-content-md-end py-2">
+          <a
+            href=""
+            class="btn btn-primary lighten-1"
+            role="button"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Edit Child</a
+          >
         </div>
       </div>
     </div>

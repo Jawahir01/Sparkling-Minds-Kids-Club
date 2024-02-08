@@ -66,11 +66,12 @@
                 </div>
               </div>
               <br /><br />
+              {% if not session.user %}
               <span
                 class="btn bg-primary text-white rounded-pill py-2 px-3"
-                href=""
+                href="{{ url_for('register') }}"
                 >Enroll Now</span
-              >
+              >{% endif %}
             </div>
           </div>
         </div>

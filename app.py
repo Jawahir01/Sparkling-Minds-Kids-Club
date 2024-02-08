@@ -20,9 +20,17 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# Home Page route
 @app.route("/")
 def index():
     return render_template("index.html")
+
+
+# Courses route
+@app.route("/courses")
+def courses():
+    courses = list(mongo.db.courses.find())
+    return render_template("courses.html", courses=courses)
 
 
 # User registration route

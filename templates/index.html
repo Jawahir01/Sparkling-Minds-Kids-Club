@@ -101,26 +101,18 @@
             <a href="{{ url_for('index') }}" class="nav-item nav-link active"
               >Home</a
             >
-            <a href="#" class="nav-item nav-link">About Us</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Features</a>
+                <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                    <a href="#about_us" class="dropdown-item">About Us</a>
+                    <a href="#gallery" class="dropdown-item">Gallery</a>
+                    <a href="#teachers" class="dropdown-item">Teachers</a>
+                    <a href="#testimonial" class="dropdown-item">Testimonial</a>
+                </div>
+            </div>
             <a href="{{ url_for('courses') }}" class="nav-item nav-link"
               >Courses</a
             >
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                >Features</a
-              >
-              <div
-                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
-              >
-                <a href="#" class="dropdown-item">Our Facilities</a>
-                <a href="#" class="dropdown-item">Gallery</a>
-                <a href="#" class="dropdown-item">Teachers</a>
-                <a href="#" class="dropdown-item">Testimonial</a>
-              </div>
-            </div>
             <a href="#" class="nav-item nav-link">Contact Us</a>
           </div>
           <div class="nav-item dropdown">
@@ -128,8 +120,15 @@
               href="#"
               class="btn btn-primary rounded-pill px-3 d-none d-lg-block dropdown-toggle"
               data-bs-toggle="dropdown"
-              ><i class="fa fa-user ms-3"></i
-            ></a>
+            >
+              {% if session.user %} {{ username }}<i
+                class="fa fa-user ms-3"
+              ></i>
+              {% else %}
+              <i class="fa fa-user ms-3"></i>
+              {% endif %}
+            </a>
+            {% if session.user %}
             <div
               class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
             >
@@ -139,16 +138,21 @@
                 >Profile</a
               >
               <hr class="dropdown-divider" />
-              <a href="{{ url_for('signin') }}" class="dropdown-item">Singin</a>
-              <hr class="dropdown-divider" />
               <a href="{{ url_for('signout') }}" class="dropdown-item"
                 >Singout</a
               >
+            </div>
+            {% else %}
+            <div
+              class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+            >
+              <a href="{{ url_for('signin') }}" class="dropdown-item">Singin</a>
               <hr class="dropdown-divider" />
               <a href="{{ url_for('register') }}" class="dropdown-item"
                 >Register</a
               >
             </div>
+            {% endif %}
           </div>
         </div>
       </nav>
@@ -293,7 +297,7 @@
       <main class="container">{% block content %} {% endblock %}</main>
 
       <!-- About Us Start -->
-      <div class="container-xxl py-5">
+      <div id="about_us" class="container-xxl py-5">
         <div class="container">
           <div
             class="text-center mx-auto mb-5 wow fadeInUp"
@@ -388,7 +392,7 @@
       <!-- About Us End -->
 
       <!-- Gallery Start -->
-      <div class="container-xxl py-5">
+      <div id="gallery" class="container-xxl py-5">
         <div class="containe">
           <div
             class="text-center mx-auto mb-5 wow fadeInUp"
@@ -496,7 +500,7 @@
       <!-- Gallery End -->
 
       <!-- Teachers Start -->
-      <div class="container-xxl py-5">
+      <div id="teachers" class="container-xxl py-5">
         <div class="container">
           <div
             class="text-center mx-auto mb-5 wow fadeInUp"
@@ -554,7 +558,7 @@
       <!-- Teachers End -->
 
       <!-- Testimonial Start -->
-      <div class="container-xxl py-5">
+      <div id="testimonial" class="container-xxl py-5">
         <div class="container">
           <div
             class="text-center mx-auto mb-5 wow fadeInUp"

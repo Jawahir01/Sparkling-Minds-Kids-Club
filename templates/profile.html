@@ -314,15 +314,15 @@
                       <option selected>
                         Choose Your Child's Academic Year
                       </option>
-                      <option value="1">Year 1</option>
-                      <option value="2">Year 2</option>
-                      <option value="3">Year 3</option>
-                      <option value="4">Year 4</option>
-                      <option value="5">Year 5</option>
-                      <option value="6">Year 6</option>
-                      <option value="7">Year 7</option>
-                      <option value="8">Year 8</option>
-                      <option value="9">Year 9</option>
+                      <option value="Year 1">Year 1</option>
+                      <option value="Year 2">Year 2</option>
+                      <option value="Year 3">Year 3</option>
+                      <option value="Year 4">Year 4</option>
+                      <option value="Year 5">Year 5</option>
+                      <option value="Year 6">Year 6</option>
+                      <option value="Year 7">Year 7</option>
+                      <option value="Year 8">Year 8</option>
+                      <option value="Year 9">Year 9</option>
                     </select>
                   </div>
                 </div>
@@ -334,11 +334,11 @@
                     </label>
                   </div>
                   <div class="col-lg-4 col-md-12 col-sm-12" id="child_choice">
-                    {% for choice in child_choice %}
+                    {% for choice in courses %}
                     <div class="form-check form-check-inline">
                       <input
                         class="form-check-input"
-                        name="choice"
+                        name="child_choice"
                         type="checkbox"
                         id="{{ choice }}"
                         value="{{ choice.course_name  }}"
@@ -426,8 +426,9 @@
                           <strong>School Year: </strong>{{ child.school_year }}
                         </li>
                         <li class="list-group-item">
-                          <strong>Course/Sport: </strong>{{ child.child_choice
-                          }}
+                          <strong>Course/Sport: </strong>
+                          {% for choice in child.child_choice%} {{ choice }} -
+                          {%endfor%}
                         </li>
                         <li class="list-group-item">
                           <strong>Medical Conditions: </strong>{{

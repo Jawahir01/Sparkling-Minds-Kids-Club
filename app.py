@@ -101,12 +101,12 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     # List the courses for the child to choose from
-    child_choice = list(mongo.db.courses.find())
+    courses = list(mongo.db.courses.find())
 
     if session["user"]:
         children = list(mongo.db.kids.find({'username': username}))
         return render_template("profile.html", username=username,
-                               children=children, child_choice=child_choice)
+                               children=children, courses=courses)
 
 
 # Add Child route
@@ -115,6 +115,7 @@ def add_child():
     # insert a child to DB based on user's session
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    courses = list(mongo.db.courses.find())
 
     # Add new child to the user's list
     if request.method == "POST":
@@ -132,7 +133,7 @@ def add_child():
         flash("Your Child hass been added successfully!")
 
     children = list(mongo.db.kids.find({'username': username}))
-    return render_template("profile.html", children=children)
+    return render_template("profile.html", children=children, courses=courses)
 
 
 # Edit Child route

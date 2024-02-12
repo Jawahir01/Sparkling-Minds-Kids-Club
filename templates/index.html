@@ -118,45 +118,48 @@
               >Courses</a
             >
             <a href="#" class="nav-item nav-link">Contact Us</a>
-          </div>
-          <div class="nav-item dropdown">
-            <a
-              href="#"
-              class="btn btn-primary rounded-pill px-1 d-none d-lg-block dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              {% if session.user %} {{ username }}<i
-                class="fa fa-user ms-3"
-              ></i>
-              {% else %}
-              <i class="fa fa-user ms-3"></i>
-              {% endif %}
-            </a>
-            {% if session.user %}
-            <div
-              class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
-            >
+
+            <div class="nav-item nav-link dropdown" style="left: 23%">
               <a
-                class="dropdown-item"
-                href="{{ url_for('profile', username=session['user']) }}"
-                >Profile</a
+                href="#"
+                class="btn btn-primary rounded-pill px-3 dropdown-toggle"
+                data-bs-toggle="dropdown"
               >
-              <hr class="dropdown-divider" />
-              <a href="{{ url_for('signout') }}" class="dropdown-item"
-                >Singout</a
+                {% if session.user %} {{ username }}<i
+                  class="fa fa-user ms-3"
+                ></i>
+                {% else %}
+                <i class="fa fa-user ms-3"></i>
+                {% endif %}
+              </a>
+              {% if session.user %}
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
               >
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('profile', username=session['user']) }}"
+                  >Profile</a
+                >
+                <hr class="dropdown-divider" />
+                <a href="{{ url_for('signout') }}" class="dropdown-item"
+                  >Singout</a
+                >
+              </div>
+              {% else %}
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+              >
+                <a href="{{ url_for('signin') }}" class="dropdown-item"
+                  >Singin</a
+                >
+                <hr class="dropdown-divider" />
+                <a href="{{ url_for('register') }}" class="dropdown-item"
+                  >Register</a
+                >
+              </div>
+              {% endif %}
             </div>
-            {% else %}
-            <div
-              class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
-            >
-              <a href="{{ url_for('signin') }}" class="dropdown-item">Singin</a>
-              <hr class="dropdown-divider" />
-              <a href="{{ url_for('register') }}" class="dropdown-item"
-                >Register</a
-              >
-            </div>
-            {% endif %}
           </div>
         </div>
       </nav>

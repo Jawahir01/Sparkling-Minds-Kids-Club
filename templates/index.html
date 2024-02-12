@@ -54,7 +54,6 @@
       href="{{ url_for('static', filename='css/style.css') }}"
       rel="stylesheet"
     />
-    {% block styles %} {% endblock %}
   </head>
 
   <body>
@@ -73,8 +72,6 @@
         </div>
       </div>
       <!-- Spinner End -->
-
-      {% block nav %}
 
       <!-- Navbar Start -->
       <nav
@@ -102,13 +99,20 @@
               >Home</a
             >
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Features</a>
-                <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                    <a href="#about_us" class="dropdown-item">About Us</a>
-                    <a href="#gallery" class="dropdown-item">Gallery</a>
-                    <a href="#teachers" class="dropdown-item">Teachers</a>
-                    <a href="#testimonial" class="dropdown-item">Testimonial</a>
-                </div>
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                >Features</a
+              >
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+              >
+                <a href="#about_us" class="dropdown-item">About Us</a>
+                <a href="#gallery" class="dropdown-item">Gallery</a>
+                <a href="#teachers" class="dropdown-item">Teachers</a>
+                <a href="#testimonial" class="dropdown-item">Testimonial</a>
+              </div>
             </div>
             <a href="{{ url_for('courses') }}" class="nav-item nav-link"
               >Courses</a
@@ -118,7 +122,7 @@
           <div class="nav-item dropdown">
             <a
               href="#"
-              class="btn btn-primary rounded-pill px-3 d-none d-lg-block dropdown-toggle"
+              class="btn btn-primary rounded-pill px-1 d-none d-lg-block dropdown-toggle"
               data-bs-toggle="dropdown"
             >
               {% if session.user %} {{ username }}<i
@@ -157,7 +161,6 @@
         </div>
       </nav>
       <!-- Navbar End -->
-      {% endblock %}
 
       <!-- Carousel Start -->
       <div class="container-fluid p-0 mb-5">
@@ -186,14 +189,14 @@
                       Club is the perfect place for you
                     </p>
                     <a
-                      href=""
+                      href="#about_us"
                       class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft"
                       >Learn More</a
                     >
                     <a
-                      href=""
+                      href="{{ url_for('courses') }}"
                       class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight"
-                      >Our Classes</a
+                      >Our Courses</a
                     >
                   </div>
                 </div>
@@ -223,14 +226,14 @@
                       educational and enjoyable.
                     </p>
                     <a
-                      href=""
+                      href="#about_us"
                       class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft"
                       >Learn More</a
                     >
                     <a
-                      href=""
+                      href="{{ url_for('courses') }}"
                       class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight"
-                      >Our Classes</a
+                      >Our Courses</a
                     >
                   </div>
                 </div>
@@ -260,14 +263,14 @@
                       experiments.
                     </p>
                     <a
-                      href=""
+                      href="#about_us"
                       class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft"
                       >Learn More</a
                     >
                     <a
-                      href=""
+                      href="{{ url_for('courses') }}"
                       class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight"
-                      >Our Classes</a
+                      >Our Courses</a
                     >
                   </div>
                 </div>
@@ -294,8 +297,6 @@
         {% endfor %} {% endif %} {% endwith %}
       </section>
 
-      <main class="container">{% block content %} {% endblock %}</main>
-
       <!-- About Us Start -->
       <div id="about_us" class="container-xxl py-5">
         <div class="container">
@@ -314,7 +315,7 @@
             </p>
             <br />
             <a
-              href=""
+              href="{{ url_for('courses') }}"
               class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft"
             >
               Enroll Now</a

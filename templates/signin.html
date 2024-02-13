@@ -73,56 +73,103 @@
       </div>
       <!-- Spinner End -->
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+      <!-- Navbar Start -->
+      <nav
+        class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0"
+      >
         <a href="{{ url_for('index') }}" class="navbar-brand">
-            <h3 class="m-0" style="color: #2815b9">
-                <img src="{{ url_for('static', filename='img/logo.png')}}" class="logo me-3" />Sparkilng Minds Club
-            </h3>
+          <h3 class="m-0" style="color: #2815b9">
+            <img
+              src="{{ url_for('static', filename='img/logo.png')}}"
+              class="logo me-3"
+            />Sparkilng Minds Club
+          </h3>
         </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto">
-                <a href="{{ url_for('index') }}" class="nav-item nav-link">Home</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Features</a>
-                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                        <a href="{{ url_for('index') }}" class="dropdown-item">About Us</a>
-                        <a href="{{ url_for('index') }}" class="dropdown-item">Gallery</a>
-                        <a href="{{ url_for('index') }}" class="dropdown-item">Teachers</a>
-                        <a href="{{ url_for('index') }}" class="dropdown-item">Testimonial</a>
-                    </div>
-                </div>
-                <a href="{{ url_for('courses') }}" class="nav-item nav-link">Courses</a>
-                <a href="#" class="nav-item nav-link">Contact Us</a>
-    
-                <div class="nav-item nav-link dropdown" style="left: 23%">
-                    <a href="#" class="btn btn-primary rounded-pill px-3 dropdown-toggle" data-bs-toggle="dropdown">
-                        {% if session.user %} {{ username }}<i class="fa fa-user ms-3"></i>
-                        {% else %}
-                        <i class="fa fa-user ms-3"></i>
-                        {% endif %}
-                    </a>
-                    {% if session.user %}
-                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                        <a class="dropdown-item" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                        <hr class="dropdown-divider" />
-                        <a href="{{ url_for('signout') }}" class="dropdown-item">Singout</a>
-                    </div>
-                    {% else %}
-                    <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                        <a href="{{ url_for('signin') }}" class="dropdown-item  active">Singin</a>
-                        <hr class="dropdown-divider" />
-                        <a href="{{ url_for('register') }}" class="dropdown-item">Register</a>
-                    </div>
-                    {% endif %}
-                </div>
+          <div class="navbar-nav mx-auto">
+            <a href="{{ url_for('index') }}" class="nav-item nav-link">Home</a>
+            <div class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                data-bs-toggle="dropdown"
+                >Features</a
+              >
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+              >
+                <a href="{{ url_for('index') }}" class="dropdown-item"
+                  >About Us</a
+                >
+                <a href="{{ url_for('index') }}" class="dropdown-item"
+                  >Gallery</a
+                >
+                <a href="{{ url_for('index') }}" class="dropdown-item"
+                  >Teachers</a
+                >
+                <a href="{{ url_for('index') }}" class="dropdown-item"
+                  >Testimonial</a
+                >
+              </div>
             </div>
+            <a href="{{ url_for('courses') }}" class="nav-item nav-link"
+              >Courses</a
+            >
+            <a href="#" class="nav-item nav-link">Contact Us</a>
+
+            <div class="nav-item nav-link dropdown" style="left: 23%">
+              <a
+                href="#"
+                class="btn btn-primary rounded-pill px-3 dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                {% if session.user %} {{ username }}<i
+                  class="fa fa-user ms-3"
+                ></i>
+                {% else %}
+                <i class="fa fa-user ms-3"></i>
+                {% endif %}
+              </a>
+              {% if session.user %}
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+              >
+                <a
+                  class="dropdown-item"
+                  href="{{ url_for('profile', username=session['user']) }}"
+                  >Profile</a
+                >
+                <hr class="dropdown-divider" />
+                <a href="{{ url_for('signout') }}" class="dropdown-item"
+                  >Singout</a
+                >
+              </div>
+              {% else %}
+              <div
+                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
+              >
+                <a href="{{ url_for('signin') }}" class="dropdown-item active"
+                  >Singin</a
+                >
+                <hr class="dropdown-divider" />
+                <a href="{{ url_for('register') }}" class="dropdown-item"
+                  >Register</a
+                >
+              </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
-    </nav>
-    <!-- Navbar End -->
+      </nav>
+      <!-- Navbar End -->
 
       <section>
         <!-- flash messages -->
@@ -209,7 +256,9 @@
                       </p>
                       <p class="mb-2">
                         Forgot Your password?
-                        <a href="#"> Click here.</a>
+                        <a href="{{url_for ('forgot_password') }}">
+                          Click here.</a
+                        >
                       </p>
                     </div>
                   </div>

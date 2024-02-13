@@ -23,9 +23,12 @@ mongo = PyMongo(app)
 # Home Page route
 @app.route("/")
 def index():
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    return render_template("index.html", username=username)
+    # username = mongo.db.users.find_one(
+    #     {"username": session["user"]})["username"]
+    # if session["user"]:
+    #     return render_template("index.html", username=username)
+    # else:
+    return render_template("index.html")
 
 
 # Courses route
@@ -96,6 +99,12 @@ def signin():
             return redirect(url_for("signin"))
 
     return render_template("signin.html")
+
+
+# forgot_password
+@app.route("/forgot_password")
+def forgot_password():
+    return render_template("forgot_password.html")
 
 
 # User Profile route

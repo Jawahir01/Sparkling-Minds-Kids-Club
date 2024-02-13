@@ -102,8 +102,39 @@ def signin():
 
 
 # forgot_password
-@app.route("/forgot_password")
+@app.route("/forgot_password", methods=["GET", "POST"])
 def forgot_password():
+    if request.method == "POST":
+        # check if username exists in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+        question = mongo.db.users.find_one(
+            {"security-question": request.form.get("security-question")})
+        answer = mongo.db.users.find_one(
+            {"security-answer": request.form.get("security-answer")})
+        if existing_user:
+            # Check if Security Question and answer matches user input
+            if question and answer:
+                # update = {
+                #     "password": generate_password_hash(
+                #         request.form.get("password"))}
+                # mongo.db.users.update({"_id": ObjectId(users_id)}, update)
+                # flash("Your Your password has been Successfully Updated")
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome back, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
+            else:
+                # invalid answer
+                flash("Incorrect Username and/or Answer")
+                return redirect(url_for("forgot_password"))
+
+        else:
+            # username doesn't exist
+            flash("Incorrect Username and/or Answer")
+            return redirect(url_for("signin"))
+
     return render_template("forgot_password.html")
 
 

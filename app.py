@@ -31,8 +31,10 @@ def index():
 # Courses route
 @app.route("/courses")
 def courses():
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     courses = list(mongo.db.courses.find())
-    return render_template("courses.html", courses=courses)
+    return render_template("courses.html", courses=courses, username=username)
 
 
 # User registration route

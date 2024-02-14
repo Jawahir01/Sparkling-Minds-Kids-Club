@@ -113,18 +113,13 @@ def forgot_password():
         answer = mongo.db.users.find_one(
             {"security-answer": request.form.get("security-answer")})
         if existing_user:
-            # Check if Security Question and answer matches user input
+            # Check if Security Question and answer match the user input
             if question and answer:
-                # update = {
-                #     "password": generate_password_hash(
-                #         request.form.get("password"))}
-                # mongo.db.users.update({"_id": ObjectId(users_id)}, update)
-                # flash("Your Your password has been Successfully Updated")
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back, {}".format(
                     request.form.get("username")))
-                return redirect(url_for(
-                    "profile", username=session["user"]))
+
+                return render_template("update_password.html")
             else:
                 # invalid answer
                 flash("Incorrect Username and/or Answer")
@@ -136,6 +131,20 @@ def forgot_password():
             return redirect(url_for("signin"))
 
     return render_template("forgot_password.html")
+
+
+# Update Password
+@app.route("/update_password/<users_id>", methods=["GET", "POST"])
+def update_password(users_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    if request.method == "POST":
+        update = {"password": generate_password_hash(
+            request.form.get("password"))}
+        mongo.db.users.update_one({"_id": ObjectId(users_id)}, update)
+
+    flash("Your New password has been Successfully Updated")
+    return render_template("profile", username=username)
 
 
 # User Profile route

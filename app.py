@@ -34,8 +34,6 @@ def index():
 # Courses route
 @app.route("/courses")
 def courses():
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
     courses = list(mongo.db.courses.find())
     return render_template("courses.html", courses=courses, username=username)
 
@@ -118,7 +116,6 @@ def forgot_password():
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back, {}".format(
                     request.form.get("username")))
-
                 return render_template("update_password.html")
             else:
                 # invalid answer
@@ -134,17 +131,29 @@ def forgot_password():
 
 
 # Update Password
-@app.route("/update_password/<users_id>", methods=["GET", "POST"])
-def update_password(users_id):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    if request.method == "POST":
-        update = {"password": generate_password_hash(
-            request.form.get("password"))}
-        mongo.db.users.update_one({"_id": ObjectId(users_id)}, update)
+@app.route("/update_password/<username>", methods=["GET", "POST"])
+def update_password(username):
 
+    user = mongo.db.users.find_one(
+        {"username": session["user"]})
+    if request.method == "POST":
+        update = {
+            "username": user["username"],
+            "password": generate_password_hash(
+                request.form.get("password")),
+            "first-name": user["first-name"],
+            "last-name": user["last-name"],
+            "email": user["email"],
+            "security-question": user["security-question"],
+            "security-answer": user["security-answer"]
+
+        }
+
+        mongo.db.users.replace_one({"_id": ObjectId(user["_id"])}, update)
+    courses = list(mongo.db.courses.find())
+    children = list(mongo.db.kids.find({'username': username}))
     flash("Your New password has been Successfully Updated")
-    return render_template("profile", username=username)
+    return render_template("profile.html", username=username, children=children, courses=courses)
 
 
 # User Profile route
@@ -179,7 +188,7 @@ def add_child():
             "date_of_birth": request.form.get("date_of_birth"),
             "school_name": request.form.get("school_name"),
             "school_year": request.form.get("school_year"),
-            "child_choice": list(request.form.get("choice")),
+            "child_choice": request.form.getlist("child_choice"),
             "child_med_conditions": request.form.get("child_med_conditions")
         }
         mongo.db.kids.insert_one(child)

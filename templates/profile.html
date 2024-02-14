@@ -343,7 +343,9 @@
                         id="{{ choice }}"
                         value="{{ choice.course_name  }}"
                       />
-                      <label class="form-check-label" for="{{ choice }}"
+                      <label
+                        class="form-check-label"
+                        for="{{ choice.course_name }}"
                         >{{ choice.course_name }}</label
                       >
                     </div>
@@ -427,7 +429,7 @@
                         </li>
                         <li class="list-group-item">
                           <strong>Course/Sport: </strong>
-                          {% for choice in child.child_choice%} {{ choice }} -
+                          {% for choice in child.child_choice%} - {{ choice }}
                           {%endfor%}
                         </li>
                         <li class="list-group-item">

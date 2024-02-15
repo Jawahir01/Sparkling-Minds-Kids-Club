@@ -107,13 +107,9 @@ def forgot_password():
         # check if username exists in db
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        question = mongo.db.users.find_one(
-            {"security-question": request.form.get("security-question")})
-        answer = mongo.db.users.find_one(
-            {"security-answer": request.form.get("security-answer")})
         if existing_user:
             # Check if Security Question and answer match the user input
-            if question and answer:
+            if (existing_user.get("security-question") == request.form.get("security-question")) and (existing_user.get("security-answer") == request.form.get("security-answer")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back, {}".format(
                     request.form.get("username")))

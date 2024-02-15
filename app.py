@@ -24,19 +24,22 @@ mongo = PyMongo(app)
 # Home Page route
 @app.route("/")
 def index():
-    # username = mongo.db.users.find_one(
-    #     {"username": session["user"]})["username"]
-    # if session["user"]:
-    #     return render_template("index.html", username=username)
-    # else:
     return render_template("index.html")
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    if session["user"]:
+        return render_template("index.html", username=username)
 
 
 # Courses route
 @app.route("/courses")
 def courses():
     courses = list(mongo.db.courses.find())
-    return render_template("courses.html", courses=courses, username=username)
+    return render_template("courses.html", courses=courses)
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    if session["user"]:
+        return render_template("courses.html", courses=courses, username=username)
 
 
 # User registration route

@@ -24,8 +24,8 @@
             $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
         }
     });
-    
-    
+
+
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
@@ -35,7 +35,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
         return false;
     });
 
@@ -47,8 +47,8 @@
         items: 1,
         dots: true,
         loop: true,
-        nav : true,
-        navText : [
+        nav: true,
+        navText: [
             '<i class="bi bi-chevron-left"></i>',
             '<i class="bi bi-chevron-right"></i>'
         ]
@@ -62,20 +62,43 @@
         margin: 24,
         dots: false,
         loop: true,
-        nav : true,
-        navText : [
+        nav: true,
+        navText: [
             '<i class="bi bi-arrow-left"></i>',
             '<i class="bi bi-arrow-right"></i>'
         ],
         responsive: {
-            0:{
-                items:1
+            0: {
+                items: 1
             },
-            992:{
-                items:2
+            992: {
+                items: 2
             }
         }
     });
-    
+
 })(jQuery);
 
+// Limit the checkbox selected up to 4
+function limitCheckboxSelection() {
+    var checkboxes = document.getElementsByName("child_choice");
+    var checkedCount = 0;
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            checkedCount++;
+        }
+    }
+
+    if (checkedCount >= 4) {
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (!checkboxes[i].checked) {
+                checkboxes[i].disabled = true;
+            }
+        }
+    } else {
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].disabled = false;
+        }
+    }
+}

@@ -102,3 +102,8 @@ function limitCheckboxSelection() {
         }
     }
 }
+
+// 
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});

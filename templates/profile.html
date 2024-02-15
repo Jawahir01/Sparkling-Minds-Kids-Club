@@ -188,21 +188,30 @@
         {% endfor %} {% endif %} {% endwith %}
       </section>
 
-      <div class="container-xxl py-3">
+      <div class="container-xxl py-2 pt-5">
         <div class="container">
           <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-            <h3 class="mb-3">{{ username }}'s Profile</h3>
-            <div class="col-2" style="position: absolute; left: 70%">
-              <button
-                class="btn btn-primary w-80 py-3"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                <i class="fa fa-plus"></i> Add Child
-              </button>
+            <div class="row">
+              <div class="col-8">
+                <h6 class="py-1 mb-3">Click to Add Your Child/Children</h6>
+                <p class="mb-0">
+                  Please note: To optimize your child's experience, you may
+                  select a maximum of four courses or sports for enrollment per
+                  academic year.
+                </p>
+              </div>
+              <div class="col-2" style="position: absolute; left: 70%">
+                <button
+                  class="btn btn-primary w-80 py-3"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                >
+                  <i class="fa fa-plus"></i> Add Child
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from datetime import (date, datetime, timedelta)
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -171,6 +172,14 @@ def profile(username):
                                children=children, courses=courses)
 
 
+# Age Function
+def calculate_age(born):
+    today = datetime.now()
+    age = today.year - born.year - (
+        (today.month, today.day) < (born.month, born.day))
+    return age
+
+
 # Add Child route
 @app.route("/add_child", methods=["GET", "POST"])
 def add_child():
@@ -181,24 +190,39 @@ def add_child():
 
     # Add new child to the user's list
     if request.method == "POST":
-        child = {
-            "username": session["user"],
-            "childfname": request.form.get("childfname"),
-            "childlname": request.form.get("childlname"),
-            "date_of_birth": request.form.get("date_of_birth"),
-            "school_name": request.form.get("school_name"),
-            "school_year": request.form.get("school_year"),
-            "child_choice": request.form.getlist("child_choice"),
-            "child_med_conditions": request.form.get("child_med_conditions")
-        }
-        mongo.db.kids.insert_one(child)
-        flash("Your Child hass been added successfully!")
+        username = session["user"]
+        childfname = request.form.get("childfname")
+        childlname = request.form.get("childlname")
+        date_of_birth = datetime.strptime(
+            request.form["date_of_birth"], '%Y-%m-%d'
+        )
+        age = calculate_age(date_of_birth)
+        school_name = request.form.get("school_name")
+        school_year = request.form.get("school_year")
+        child_choice = request.form.getlist("child_choice")
+        child_med_conditions = request.form.get("child_med_conditions")
+
+        if 6 <= age <= 15:
+            child = {
+                "username": username,
+                "childfname": childfname,
+                "childlname": childlname,
+                "date_of_birth": date_of_birth.strftime('%Y-%m-%d'),
+                "school_name": school_name,
+                "school_year": school_year,
+                "child_choice": child_choice,
+                "child_med_conditions": child_med_conditions
+            }
+            mongo.db.kids.insert_one(child)
+            flash("Your Child hass been added successfully!")
+
+        else:
+            flash("Unfortunately, you\'re age is not qualified for our club")
 
     children = list(mongo.db.kids.find({'username': username}))
     return render_template("profile.html", children=children, courses=courses)
 
 
-# Edit Child route
 @app.route("/edit_child/<kids_id>", methods=["GET", "POST"])
 def edit_child(kids_id):
 

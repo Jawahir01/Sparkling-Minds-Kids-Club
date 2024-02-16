@@ -246,6 +246,12 @@ def edit_child(kids_id):
     return render_template("profile.html", child=child, children=children)
 
 
+# Contact Us route
+@app.route("/contact_us")
+def contact_us():
+    return render_template("contact_us.html")
+
+
 # Signout route
 @app.route("/signout")
 def signout():

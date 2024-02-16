@@ -152,7 +152,9 @@
             <a href="{{ url_for('courses') }}" class="nav-item nav-link active"
               >Courses</a
             >
-            <a href="#" class="nav-item nav-link">Contact Us</a>
+            <a href="{{ url_for('contact_us') }}" class="nav-item nav-link"
+              >Contact Us</a
+            >
 
             <div class="nav-item nav-link dropdown" style="left: 23%">
               <a
@@ -458,7 +460,11 @@
                 href="{{ url_for('index') }}"
                 >About Us</a
               >
-              <a class="btn btn-link text-white-50" href="">Contact Us</a>
+              <a
+                class="btn btn-link text-white-50"
+                href="{{ url_for('courses') }}"
+                >Our Courses</a
+              >
               <a
                 class="btn btn-link text-white-50"
                 href="{{ url_for('index') }}"

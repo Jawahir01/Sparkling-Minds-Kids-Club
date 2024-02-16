@@ -146,8 +146,9 @@
             <a href="{{ url_for('courses') }}" class="nav-item nav-link"
               >Courses</a
             >
-            <a href="#" class="nav-item nav-link">Contact Us</a>
-
+            <a href="{{ url_for('contact_us') }}" class="nav-item nav-link"
+              >Contact Us</a
+            >
             <div class="nav-item nav-link dropdown" style="left: 23%">
               <a
                 href="#"
@@ -737,7 +738,11 @@
               <a class="btn btn-link text-white-50" href="#about_us"
                 >About Us</a
               >
-              <a class="btn btn-link text-white-50" href="">Contact Us</a>
+              <a
+                class="btn btn-link text-white-50"
+                href="{{ url_for('contact_us') }}"
+                >Contact Us</a
+              >
               <a class="btn btn-link text-white-50" href="#teachers"
                 >Our Teachers</a
               >

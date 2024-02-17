@@ -274,7 +274,7 @@
                 <div
                   class="h-100 d-flex flex-column justify-content-center p-5"
                 >
-                  <form method="post" action="#">
+                  <form method="post" action="{{ url_for('thank_you') }}">
                     <div class="row g-3">
                       <div class="col-sm-6">
                         <div class="form-floating">
@@ -307,6 +307,7 @@
                             class="form-control border-0"
                             id="subject"
                             placeholder="Subject"
+                            required
                           />
                           <label for="subject">Subject</label>
                         </div>

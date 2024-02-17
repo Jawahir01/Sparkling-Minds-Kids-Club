@@ -252,6 +252,13 @@ def contact_us():
     return render_template("contact_us.html")
 
 
+# Thank you route
+@app.route("/thank_you", methods=["GET", "POST"])
+def thank_you():
+    if request.method == "POST":
+        return render_template("thank_you.html")
+
+
 # Signout route
 @app.route("/signout")
 def signout():

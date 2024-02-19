@@ -112,10 +112,10 @@
           >
             <img
               src="{{ url_for('static', filename='img/logo.png')}}"
-              class="logo img-fluid rounded bg-light p-4"
+              class="logo img-fluid p-1"
+              style="width: 200px; height: auto"
             />
-            <h1 class="mb-5 justify-content-center">THANK YOU!</h1>
-            <i class="fa fa-check fa-4x text-primary"></i>
+            <h1 class="mb-6 justify-content-center">THANK YOU!</h1>
           </div>
 
           <div class="bg-light rounded justify-content-center">
@@ -126,19 +126,20 @@
                 style="max-width: 600px"
               >
                 <div
-                  class="h-100 d-flex flex-column justify-content-center p-5"
+                  class="h-100 d-flex flex-column justify-content-center align-items-center p-4"
                 >
-                  <p class="mb-0 facility-text py-5">
+                  <p class="mb-1 facility-text fs-5 py-5">
                     We have recieved your message. A member of staff will
                     contact you shortly.
                   </p>
 
                   <a
                     href="{{ url_for('index') }}"
-                    class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-1 animated slideInLeft"
+                    class="btn btn-primary rounded-pill py-3 animated slideInLeft"
+                    style="width: 200px"
                   >
-                    <i class="fab bi-arrow-bar-left::before"></i> Back Home</a
-                  >
+                    <i class="fab bi-arrow-left"></i> Back Home
+                  </a>
                 </div>
               </div>
             </div>

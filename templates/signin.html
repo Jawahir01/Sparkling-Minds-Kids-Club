@@ -203,22 +203,6 @@
       </nav>
       <!-- Navbar End -->
 
-      <section>
-        <!-- flash messages -->
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <div class="container">
-          <div
-            class="text-left mx-auto mb-2 wow fadeInUp"
-            data-wow-delay="0.1s"
-            style="max-width: 400px"
-          >
-            <h5 class="light-blue mb-3">{{ message }}</h5>
-          </div>
-        </div>
-        {% endfor %} {% endif %} {% endwith %}
-      </section>
-
       <!-- Signin Start -->
       <div class="container-xxl py-5">
         <div class="container">
@@ -229,6 +213,30 @@
           >
             <h1 class="mb-3">Sign in</h1>
           </div>
+
+          <section>
+            <!-- flash messages -->
+            {% with messages = get_flashed_messages() %} {% if messages %} {%
+            for message in messages %}
+            <div class="container">
+              <div
+                class="text-center mx-auto mb-2 wow fadeInUp"
+                data-wow-delay="0.1s"
+                style="
+                  max-width: 400px;
+                  height: auto;
+                  border: solid 1px #375d24;
+                  background-color: #60e32d6b;
+                "
+              >
+                <h5 class="facility-text fs-6 py-2" style="color: #225d0bb0">
+                  {{ message }}
+                </h5>
+              </div>
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
+          </section>
+
           <div class="bg-light rounded">
             <div class="row g-0">
               <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">

@@ -203,22 +203,7 @@
       </nav>
       <!-- Navbar End -->
 
-      <section>
-        <!-- flash messages -->
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <div class="container">
-          <div
-            class="text-left mx-auto mb-2 wow fadeInUp"
-            data-wow-delay="0.1s"
-            style="max-width: 400px"
-          >
-            <h5 class="light-blue mb-3">{{ message }}</h5>
-          </div>
-        </div>
-        {% endfor %} {% endif %} {% endwith %}
-      </section>
-
+      <!-- Profile Start -->
       <div class="container-xxl py-2 pt-5">
         <div class="container">
           <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -247,6 +232,31 @@
           </div>
         </div>
       </div>
+
+      <!-- Profile ends -->
+
+      <section>
+        <!-- flash messages -->
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="container">
+          <div
+            class="text-center mx-auto mb-2 wow fadeInUp"
+            data-wow-delay="0.1s"
+            style="
+              max-width: 400px;
+              height: auto;
+              border: solid 1px #375d24;
+              background-color: #60e32d6b;
+            "
+          >
+            <h5 class="facility-text fs-6 py-2" style="color: #225d0bb0">
+              {{ message }}
+            </h5>
+          </div>
+        </div>
+        {% endfor %} {% endif %} {% endwith %}
+      </section>
 
       <!-- Child Form -->
       <div class="container-xxl py-4">
@@ -535,9 +545,10 @@
             <div class="modal-body">
               <form
                 class=""
-                action="{{ url_for('edit_child', kids_id=children ) }}"
+                action="{{ url_for('edit_child', kids_id=child ) }}"
               >
                 <div class="row g-3">
+                  {% for ch in child %}
                   <label for="child_name" class="form-label"
                     >Child Name:
                   </label>
@@ -552,7 +563,7 @@
                       minlength="3"
                       maxlength="15"
                       pattern="^[A-Za-z]{1,15}$"
-                      value="{{ children.childfname }}"
+                      value="{{ ch.childfname }}"
                       required
                     />
                   </div>
@@ -567,7 +578,7 @@
                       minlength="3"
                       maxlength="15"
                       pattern="^[A-Za-z]{1,15}$"
-                      value="{{ children.childlname }}"
+                      value="{{ ch.childlname }}"
                       required
                     />
                   </div>
@@ -583,7 +594,7 @@
                       placeholder="DD/MM/YYYY"
                       aria-label="date-of-birth"
                       class="validate"
-                      value="{{ children.date_of_birth}}"
+                      value="{{ ch.date_of_birth}}"
                       required
                     />
                   </div>
@@ -599,7 +610,7 @@
                       placeholder="School Name"
                       aria-label="School Name"
                       class="validate"
-                      value="{{ children.school_name}}"
+                      value="{{ ch.school_name}}"
                       required
                     />
                   </div>
@@ -618,7 +629,7 @@
                       <option selected>
                         Choose your Child's Academic Year
                       </option>
-                      {% for children in kids %} {% if children.school_year %}
+                      {% for child in kids %} {% if children.school_year %}
                       <option value="{{children.school_year}}" selected>
                         {{children.school_year}}
                       </option>
@@ -639,8 +650,8 @@
                     >Choose Your interested Course/Sport:
                   </label>
                   <div class="col-4" id="child_choice">
-                    {% for choice in child_choice %} {% if choice.child_choice
-                    == children.child_choice %}
+                    {% for choice in courses %} {% if choice ==
+                    choice.child_choice %}
                     <option value="{{ choice.child_choice }}" selected>
                       {{ choice.child_choice }}
                     </option>
@@ -651,7 +662,8 @@
                         name="child_choice"
                         type="checkbox"
                         id="{{ choice }}"
-                        value="{{ child_choice.course_name }}"
+                        value="{{ choice.course_name  }}"
+                        onclick="limitCheckboxSelection()"
                       />
                       <label class="form-check-label" for="{{ choice }}"
                         >{{ choice.course_name }}</label
@@ -671,11 +683,12 @@
                       placeholder="Please explain here"
                       aria-label="With textarea"
                       class="validate"
-                      value="{{children.child_med_conditions}}"
+                      value="{{   ch.child_med_conditions  }}"
                       required
                     >
                     </textarea>
                   </div>
+                  {% endfor %}
                 </div>
               </form>
             </div>
@@ -687,7 +700,7 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-outline-success">
+              <button type="submit" class="btn btn-outline-success">
                 Save Changes
               </button>
             </div>

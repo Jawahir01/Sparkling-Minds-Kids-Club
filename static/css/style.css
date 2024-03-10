@@ -85,7 +85,7 @@ h4,
 .display-4,
 .display-5,
 .display-6 {
-    font-family: 'Lobster Two', cursive;
+    font-family: cursive,'Lobster Two';
     font-weight: 700;
 }
 
@@ -97,7 +97,7 @@ h6,
 }
 
 .font-secondary {
-    font-family: 'Heebo', cursive;
+    font-family: Heebo, 'San Serif';
 }
 
 h2,
@@ -133,7 +133,6 @@ h2,
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     vertical-align: middle;
-
     transition: .5s;
 }
 

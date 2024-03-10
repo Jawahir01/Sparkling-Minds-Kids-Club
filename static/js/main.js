@@ -103,6 +103,14 @@ function limitCheckboxSelection() {
     }
 }
 
+// Function to hide flash messages after 3sec.
+setTimeout(function () {
+    let Flash_messages = document.getElementById('messages');
+    if (Flash_messages) {
+        Flash_messages.style.display = 'none';
+    }
+}, 3000);
+
 // 
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();

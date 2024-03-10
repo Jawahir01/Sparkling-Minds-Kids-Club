@@ -224,6 +224,21 @@ def add_child():
 
 @app.route("/edit_child/<kids_id>", methods=["GET", "POST"])
 def edit_child(kids_id):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    existing_kid = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
+    kid ={
+        username : session["user"],
+        childfname : existing_kid["childfname"],
+        childlname : existing_kid["childlname"],
+        date_of_birth : existing_kid["date_of_birth"],
+        school_name : existing_kid["school_name"],
+        school_year : existing_kid["school_year"],
+        child_choice : existing_kid["child_choice"],
+        child_med_conditions : existing_kid["child_med_conditions"]
+
+    }
 
     # update child details
     if request.method == "POST":

@@ -261,6 +261,14 @@ def edit_child(kids_id):
     return render_template("profile.html", child=child, children=children)
 
 
+@app.route("/delete_child/<kids_id>")
+def delete_child(kids_id):
+    
+    mongo.db.kids.delete_one({"_id": ObjectId(kids_id)})
+    flash("Your Child's Informationaly Successfully Deleted")
+    return redirect(url_for("profile", username=session["user"]))
+
+
 # Contact Us route
 @app.route("/contact_us")
 def contact_us():

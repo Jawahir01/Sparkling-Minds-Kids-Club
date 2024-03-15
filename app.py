@@ -224,6 +224,22 @@ def add_child():
 
 @app.route("/edit_child/<kids_id>", methods=["GET", "POST"])
 def edit_child(kids_id):
+    # existing_kid = list(mongo.db.kids.find_one({"_id": ObjectId(kids_id)}))
+
+    # if request.method == "POST":
+    #     update = {
+    #         "childfname": request.form.get("childfname"),
+    #         "childlname": request.form.get("childlname"),
+    #         "date_of_birth": request.form.get("date_of_birth"),
+    #         "school_name": request.form.get("school_name"),
+    #         "school_year": request.form.get("school_year"),
+    #         "child_choice": request.form.getlist("child_choice"),
+    #         "child_med_conditions": request.form.get("child_med_conditions")
+    #     }
+
+    #     mongo.db.kids.update_one({"_id": ObjectId(kids_id)}, {"$set": update})
+    #     flash("Your Child's Details have been Successfully Updated")
+    #     return render_template("profile.html", child=existing_kid, courses=courses)
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -237,7 +253,6 @@ def edit_child(kids_id):
         school_year : existing_kid["school_year"],
         child_choice : existing_kid["child_choice"],
         child_med_conditions : existing_kid["child_med_conditions"]
-
     }
 
     # update child details
@@ -256,14 +271,13 @@ def edit_child(kids_id):
         mongo.db.kids.update({"_id": ObjectId(kids_id)}, update)
         flash("Your Child's Details have been Successfully Updated")
 
-    child = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
+    child = list(mongo.db.kids.find({"_id": ObjectId(kids_id)}))
     children = list(mongo.db.kids.find({'username': username}))
     return render_template("profile.html", child=child, children=children)
 
 
 @app.route("/delete_child/<kids_id>")
 def delete_child(kids_id):
-    
     mongo.db.kids.delete_one({"_id": ObjectId(kids_id)})
     flash("Your Child's Informationaly Successfully Deleted")
     return redirect(url_for("profile", username=session["user"]))

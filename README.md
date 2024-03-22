@@ -1,6 +1,9 @@
-# <img src="/static/img/logo-2.png" width="90" height="90"> Sparkling Minds Club
+# <img src="/static/img/logo-2.png" width="90" height="90"> 
+# Sparkling Minds Club
 
-The live link can be found here: [Sparkilng Minds Club](https://sparkling-minds-ffd249568f6d.herokuapp.com/)
+Sparkling Minds club is a fictional club for children to join in . It reflects the wide range of activities and courses that kids’ clubs typically offer.
+**To visit the live link click**:[Sparkilng Minds Club](https://sparkling-minds-ffd249568f6d.herokuapp.com/)
+
 
 ![Site](amiresponsive)
 

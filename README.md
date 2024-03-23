@@ -116,11 +116,11 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
     ![Footer](static/img/Doc/Features/footer.png)
 
   On the mobile/ tablet version these sections will layout on top of each other.
-  ![Footer](static/img/Doc/Features/mobile-footer.png)
+![Footer](static/img/Doc/Features/mobile-footer.png)
 
   **The pages of the website are:**
   #### Home page
-   ![Home](static/img/Doc/features/home-1.png)
+   ![Home](static/img/Doc/Features/home-1.png)
   ![Home](static/img/Doc/Features/home-2.png)
   ![Home](static/img/Doc/Features/home-3.png)
   ![Home](static/img/Doc/Features/home-4.png)
@@ -130,7 +130,7 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
   #### Register Page
   ![Register](static/img/Doc/Features/register-page.png)
   #### Sign in Page
-  ![signin](static/img/Doc/Featuressign-in-page.png)
+  ![signin](static/img/Doc/Features/sign-in-page.png)
   #### Forget Password Page
   ![singin](static/img/Doc/Features/forgot-password-page.png)
   #### Update Password Page

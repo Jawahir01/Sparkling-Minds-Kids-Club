@@ -1,4 +1,4 @@
-# <img src="/static/img/logo-2.png" width="120" height="120"> 
+# <img src="/static/img/logo-2.png" width="150" height="150"> 
 # Sparkling Minds Club
 
 Sparkling Minds club is a fictional club for children to join in . It reflects the wide range of activities and courses that kids’ clubs typically offer.
@@ -99,13 +99,13 @@ Sparkling Minds club is a fictional club for children to join in . It reflects t
   contains an image and a text of the logo at the far left and a navigation bar at the right.
 The Navigation bar has the links of Home page, Features [About us, Gallery, Teachers, Testimonials] subheadings in the main page, courses page, contact Us page and a dropdown of User font awesome icon.
   -	If the user is new or not registered, the user fontaweson will dropdown to two links: Sign in and Register.
-    ![Header](static/img/Doc/features/header-non-registerd.png)
+    ![Header](static/img/Doc/Features/header-non-registerd.png)
 
   -	If the user is registered or signed in, the user fontawesome icon will dropdown to two links: Profile and Sign out.
-     ![Header](static/img/Doc/features/header-regisred.png)
+     ![Header](static/img/Doc/Features/header-regisred.png)
   
   On the mobile version of the website, the navigation bar will have a hamburger menu icon.
-  ![Header](static/img/Doc/features/mobile-header.png)
+  ![Header](static/img/Doc/Features/mobile-header.png)
 
   #### A Footer:
   contains the following sections:
@@ -113,40 +113,40 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
   -	Quick Links to some sections or pages on the website.
   -	Photo Gallery which contains a sample photo of the Gallery Section.
   -	Section for the copy right with an image of the logo and reference to the designer, distributer, developer of the website.
-    ![Footer](static/img/Doc/features/footer.png)
+    ![Footer](static/img/Doc/Features/footer.png)
 
   On the mobile/ tablet version these sections will layout on top of each other.
-  ![Footer](static/img/Doc/features/mobile-footer.png)
+  ![Footer](static/img/Doc/Features/mobile-footer.png)
 
   **The pages of the website are:**
   #### Home page
    ![Home](static/img/Doc/features/home-1.png)
-  ![Home](static/img/Doc/features/home-2.png)
-  ![Home](static/img/Doc/features/home-3.png)
-  ![Home](static/img/Doc/features/home-4.png)
-  ![Home](static/img/Doc/features/home-5.png)
+  ![Home](static/img/Doc/Features/home-2.png)
+  ![Home](static/img/Doc/Features/home-3.png)
+  ![Home](static/img/Doc/Features/home-4.png)
+  ![Home](static/img/Doc/Features/home-5.png)
   #### Courses Page
-  ![Courses](static/img/Doc/features/courses.png)
+  ![Courses](static/img/Doc/Features/courses-page.png)
   #### Register Page
-  ![Register](static/img/Doc/features/register-page.png)
+  ![Register](static/img/Doc/Features/register-page.png)
   #### Sign in Page
-  ![signin](static/img/Doc/featuressign-in-page.png)
+  ![signin](static/img/Doc/Featuressign-in-page.png)
   #### Forget Password Page
-  ![singin](static/img/Doc/features/forgot-password-page.png)
+  ![singin](static/img/Doc/Features/forgot-password-page.png)
   #### Update Password Page
-  ![signin](static/img/Doc/features/update-password-page.png)
+  ![signin](static/img/Doc/Features/update-password-page.png)
   #### Profile Page
-   ![Profile](static/img/Doc/features/profile-page.png)
+   ![Profile](static/img/Doc/Features/profile-page.png)
   #### Profile Page when add Child button is clicked.
-   ![Profile](static/img/Doc/features/profile-add-child-btn.png)
+   ![Profile](static/img/Doc/Features/profile-add-child-btn.png)
   #### Profile Page after a child is added.
-  ![Profile](static/img/Doc/features/profile-child-added.png)
+  ![Profile](static/img/Doc/Features/profile-child-added.png)
   #### Profile Page when child is edited.
   
   #### Contact Us Page
-  ![Contact-us](static/img/Doc/features/contact-us-page.png)
+  ![Contact-us](static/img/Doc/Features/contact-us-page.png)
   #### Thank You Page
-  ![Thank-you-page](static/img/Doc/features/thank-you-page.png)
+  ![Thank-you-page](static/img/Doc/Features/thank-you-page.png)
 
 
 - ## Future Implementations

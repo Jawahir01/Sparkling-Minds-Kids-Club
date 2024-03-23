@@ -116,6 +116,7 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
     ![Footer](static/img/Doc/Features/footer.png)
 
   On the mobile/ tablet version these sections will layout on top of each other.
+
 ![Footer](static/img/Doc/Features/mobile-footer.png)
 
   **The pages of the website are:**

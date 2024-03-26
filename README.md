@@ -155,21 +155,36 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
   -	Give the user to choose whether he wants to delete his account.
   -	Make the course/Activities with various prices that suits the parents with coupons feature.
   -	Use a safe payment method.
-
+   
 
 - ## The Skeleton Plane
   - ### Wireframes
     -	Home page
-    -	Courses page
-    -	Register page.
-    -	Sign in page.
-    -	Profile page.
-    -	Profile page/add a child/children.
-    -	Profile page/ preview child/children.
-    -	Profile page/ edit a child.
-    -	Contact us page.
-    -	Thank you page.
+	![Home](static/img/Doc/wireframes/home-page.png)
 
+    -	Courses page
+	![courses](static/img/Doc/wireframes/course-page.png)
+
+    -	Register page.
+	![register](static/img/Doc/wireframes/register-page.png)
+
+    -	Sign in page.
+	![signin](static/img/Doc/wireframes/signin-page.png)
+
+    -	Profile page.
+	![profile](static/img/Doc/wireframes/profile-page.png)
+
+    -	Profile page/add a child/children.
+	![profile-add-child](static/img/Doc/wireframes/profile-add-child.png)
+
+    -	Profile page/ preview child/children.
+	![profile-preview-child](static/img/Doc/wireframes/profile-preview-child.png)
+
+    -	Contact us page.
+	![contact-us](static/img/Doc/wireframes/contact-us-page.png)
+
+    -	Thank you page.
+	![thank-you](static/img/Doc/wireframes/thank-you-page.png)
 
 
 
@@ -250,10 +265,6 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
 		```
 
 
-
-  - ### Security
-
-
 - # The-Surface-Plane
 
   - ## Design
@@ -292,8 +303,7 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
     -	W3C CSS validator: was used to validate CSS code for the website.
     -	JShint: was used to validate JS code for the website.
     -	PEP8: was used to validate Python code for the website.
-    -	Miro: was used to make wireframes for the website.
-    -	BootStrap5: 
+    -	BootStrap5: was used to create responsive elements.
 
 
 # Testing
@@ -324,6 +334,7 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
 - [ChatGPT](https://chat.openai.com/): was used to give more formal sentences for the website and README file.
 - [Favicon.io](https://favicon.io/): was used to convert the logo image into favicon.
 - [Stack Overflow](www.stackoverflow.com) - was used to search for code related errors and bugs.
+- [jeda.ai](https://go.jeda.ai/): was used to make wireframes for the website.
 
 # Acknowledgments
   - **[Iuliia Konovalova]()** :

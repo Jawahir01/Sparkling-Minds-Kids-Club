@@ -55,6 +55,28 @@
     });
 
 
+    //Handle Edit Button Click
+    document.addEventListener('DOMContentLoaded', function () {
+        const editButtons = document.querySelectorAll('.edit-child-btn');
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const childId = this.dataset.childId;
+                fetchEditModalContent(childId);
+            });
+        });
+
+        function fetchEditModalContent(childId) {
+            fetch(`/edit_child/${childId}`)
+                .then(response => response.text())
+                .then(data => {
+                    const modalContent = document.querySelector('.modal-content');
+                    modalContent.innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching edit modal content:', error));
+        }
+    });
+
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({
         autoplay: true,

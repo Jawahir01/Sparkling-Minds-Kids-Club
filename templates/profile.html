@@ -512,12 +512,8 @@
                   </div>
                   <div class="col-6 d-md-flex justify-content-md-end py-2">
                     <a
-                      href="{{ url_for('edit_child', kids_id=child._id) }}"
-                      class="btn btn-primary btn-sm lighten-1"
-                      role="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                    >
+                    href="#" class="btn btn-primary btn-sm lighten-1 edit-child-btn" role="button"
+                    data-child-id="{{ child._id }}" data-bs-toggle="modal" data-bs-target="#editModal">
                       Edit Child</a
                     >
                   </div>
@@ -530,170 +526,163 @@
       </div>
 
       <!-- Edit Form Modal -->
-      <div class="modal fade"
-      id="staticBackdrop"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-      >
-      {% for child in children %}
-        <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                Edit Child Details
-              </h1>
-              <button
-                type="submit"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            
-              <div class="modal-body">
-                <form class="" action="{{ url_for('edit_child', kids_id=child._id) }}" method="POST">
-                  <div class="row g-3">
-                    <label for="child_name" class="form-label">Child Name: </label>
-                    <div class="col-4">
-                      <input
-                        type="text"
-                        id="childfname"
-                        name="childfname"
-                        class="form-control validate"
-                        placeholder="First name"
-                        aria-label="First name"
-                        minlength="3"
-                        maxlength="15"
-                        pattern="^[A-Za-z]{1,15}$"
-                        value="{{ child.childfname }}"
-                        required
-                      />
-                    </div>
-                    <div class="col-4">
-                      <input
-                        type="text"
-                        id="childlname"
-                        name="childlname"
-                        class="form-control validate"
-                        placeholder="Last name"
-                        aria-label="Last name"
-                        minlength="3"
-                        maxlength="15"
-                        pattern="^[A-Za-z]{1,15}$"
-                        value="{{ child.childlname }}"
-                        required
-                      />
-                    </div>
-                    <label for="date_of_birth" class="form-label"
-                      >Date of Birth:
-                    </label>
-                    <div class="col-auto">
-                      <input
-                        type="date"
-                        id="date_of_birth"
-                        name="date_of_birth"
-                        class="form-control"
-                        placeholder="DD/MM/YYYY"
-                        aria-label="date-of-birth"
-                        class="validate"
-                        value="{{ child.date_of_birth}}"
-                        required
-                      />
-                    </div>
-                    <label for="school_name" class="form-label">School Name: </label>
-                    <div class="col-6">
-                      <input
-                        type="text"
-                        id="school_name"
-                        name="school_name"
-                        class="form-control"
-                        placeholder="School Name"
-                        aria-label="School Name"
-                        class="validate"
-                        value="{{ child.school_name}}"
-                        required
-                      />
-                    </div>
-                    <label for="school_year" class="form-label">School Year: </label>
-                    <div class="col-auto">
-                      <select
-                        class="form-select"
-                        id="school_year"
-                        name="school_year"
-                        aria-label="Default select example"
-                        class="validate"
-                        
-                        required
-                      >
-                        <option >Choose your Child's Academic Year</option>
-                          <option value="Year 1">Year 1</option>
-                          <option value="Year 2">Year 2</option>
-                          <option value="Year 3">Year 3</option>
-                          <option value="Year 4">Year 4</option>
-                          <option value="Year 5">Year 5</option>
-                          <option value="Year 6">Year 6</option>
-                          <option value="Year 7">Year 7</option>
-                          <option value="Year 8">Year 8</option>
-                          <option value="Year 9">Year 9</option>
-                        </select>
-                    </div>
-                    <label for="child_choice" class="form-label"
-                      >Choose Your interested Course/Sport:
-                    </label>
-                    <div class="col-5" id="child_choice">
-                      {% for choice in courses %}
-                      <div class="form-check form-check-inline col-md-12 col-sm-12">
+      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+ 
+
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  Edit Child Details
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              
+                <div class="modal-body">
+                  <form action="{{ url_for('edit_child', kids_id=child._id) }}" method="POST">
+                    <div class="row g-3">
+                      <label for="child_name" class="form-label">Child Name: </label>
+                      <div class="col-4">
                         <input
-                          class="form-check-input"
-                          name="child_choice"
-                          type="checkbox"
-                          id="{{ choice }}"
-                          value="{{ choice.course_name  }}"
-                          onclick="limitCheckboxSelection()"
+                          type="text"
+                          id="childfname"
+                          name="childfname"
+                          class="form-control validate"
+                          placeholder="First name"
+                          aria-label="First name"
+                          minlength="3"
+                          maxlength="15"
+                          pattern="^[A-Za-z]{1,15}$"
+                          value="{{ child.childfname }}"
+                          required
                         />
-                        <label
-                          class="form-check-label"
-                          for="{{ choice.course_name }}"
-                          >{{ choice.course_name }}</label
-                        >
                       </div>
-                      {% endfor %}
+                      <div class="col-4">
+                        <input
+                          type="text"
+                          id="childlname"
+                          name="childlname"
+                          class="form-control validate"
+                          placeholder="Last name"
+                          aria-label="Last name"
+                          minlength="3"
+                          maxlength="15"
+                          pattern="^[A-Za-z]{1,15}$"
+                          value="{{ child.childlname }}"
+                          required
+                        />
+                      </div>
+                      <label for="date_of_birth" class="form-label"
+                        >Date of Birth:
+                      </label>
+                      <div class="col-auto">
+                        <input
+                          type="date"
+                          id="date_of_birth"
+                          name="date_of_birth"
+                          class="form-control"
+                          placeholder="DD/MM/YYYY"
+                          aria-label="date-of-birth"
+                          class="validate"
+                          value="{{ child.date_of_birth}}"
+                          required
+                        />
+                      </div>
+                      <label for="school_name" class="form-label">School Name: </label>
+                      <div class="col-6">
+                        <input
+                          type="text"
+                          id="school_name"
+                          name="school_name"
+                          class="form-control"
+                          placeholder="School Name"
+                          aria-label="School Name"
+                          class="validate"
+                          value="{{ child.school_name}}"
+                          required
+                        />
+                      </div>
+                      <label for="school_year" class="form-label">School Year: </label>
+                      <div class="col-auto">
+                        <select
+                          class="form-select"
+                          id="school_year"
+                          name="school_year"
+                          aria-label="Default select example"
+                          class="validate"
+                          
+                          required
+                        >
+                          <option >Choose your Child's Academic Year</option>
+                            <option value="Year 1">Year 1</option>
+                            <option value="Year 2">Year 2</option>
+                            <option value="Year 3">Year 3</option>
+                            <option value="Year 4">Year 4</option>
+                            <option value="Year 5">Year 5</option>
+                            <option value="Year 6">Year 6</option>
+                            <option value="Year 7">Year 7</option>
+                            <option value="Year 8">Year 8</option>
+                            <option value="Year 9">Year 9</option>
+                          </select>
+                      </div>
+                      <label for="child_choice" class="form-label"
+                        >Choose Your interested Course/Sport:
+                      </label>
+                      <div class="col-5" id="child_choice">
+                        {% for choice in courses %}
+                        <div class="form-check form-check-inline col-md-12 col-sm-12">
+                          <input
+                            class="form-check-input"
+                            name="child_choice"
+                            type="checkbox"
+                            id="{{ choice }}"
+                            value="{{ choice.course_name  }}"
+                            onclick="limitCheckboxSelection()"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="{{ choice.course_name }}"
+                            >{{ choice.course_name }}</label
+                          >
+                        </div>
+                        {% endfor %}
+                      </div>
+                      <label for="child_med_conditions" class="form-label">
+                        Does your child suffer from any medical conditions/allergies that
+                        the club should be aware of?
+                      </label>
+                      <div class="col">
+                        <textarea
+                          id="child_med_conditions"
+                          name="child_med_conditions"
+                          class="form-control"
+                          placeholder="Please explain here"
+                          aria-label="With textarea"
+                          class="validate"
+                          value="{{child.child_med_conditions}}"
+                          required
+                        >{{child.child_med_conditions}}"
+                        </textarea>
+                      </div>
                     </div>
-                    <label for="child_med_conditions" class="form-label">
-                      Does your child suffer from any medical conditions/allergies that
-                      the club should be aware of?
-                    </label>
-                    <div class="col">
-                      <textarea
-                        id="child_med_conditions"
-                        name="child_med_conditions"
-                        class="form-control"
-                        placeholder="Please explain here"
-                        aria-label="With textarea"
-                        class="validate"
-                        value="{{child.child_med_conditions}}"
-                        required
-                      >{{child.child_med_conditions}}"
-                      </textarea>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  Close
-                </button>
-                <button type="submit" class="btn btn-outline-success">
-                  Save Changes
-                </button>
-              </div>
-            
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button type="submit" class="btn btn-outline-success">
+                    Save Changes
+                  </button>
+                </div>
+              
+            </div>
           </div>
-        </div>
-      {% endfor %}
       </div>
 
       <!-- Footer Start -->

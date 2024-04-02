@@ -171,8 +171,8 @@ def profile(username):
 
         # Attempt to find the kids_id from the request parameters
         kids_id = request.args.get('kids_id')
-        child = mongo.db.kids.find({"_id": ObjectId(kids_id)})
-
+        child = list(mongo.db.kids.find({"_id": ObjectId(kids_id)})
+)
     return render_template("profile.html", username=username,
         children=children, child=child, courses=courses)
 
@@ -235,35 +235,37 @@ def edit_child(kids_id):
         {"username": session["user"]})["username"]
     courses = list(mongo.db.courses.find())
     children = list(mongo.db.kids.find({'username': username}))
-    child = mongo.db.kids.find({"_id": ObjectId(kids_id)})
-
-    kid ={
-        "username" : session["user"],
-        "childfname" : child["childfname"],
-        "childlname" : child["childlname"],
-        "date_of_birth" : child["date_of_birth"],
-        "school_name" : child["school_name"],
-        "school_year" : child["school_year"],
-        # "child_choice" : child["child_choice"],
-        "child_med_conditions" : child["child_med_conditions"]
-    }
+    child = list(mongo.db.kids.find({"_id": ObjectId(kids_id)}))
+    if request.method == "POST":
+        if child: 
+            kid ={
+                username : session["user"],
+                _id: child.get(ObjectId(kids_id)),
+                childfname : child.get("childfname"),
+                childlname : child.get("childlname"),
+                date_of_birth : child.get("date_of_birth"),
+                school_name : child.get("school_name"),
+                school_year : child.get("school_year"),
+                child_choice : child.getlist("child_choice"),
+                child_med_conditions : child.get("child_med_conditions")
+            }
 
     # update child details
-    if request.method == "POST":
-        update_child = {
-            "username": session["user"],
-            "childfname": request.form.get("childfname"),
-            "childlname": request.form.get("childlname"),
-            "date_of_birth": request.form.get("date_of_birth"),
-            "school_name": request.form.get("school_name"),
-            "school_year": request.form.get("school_year"),
-            "child_choice": list(request.form.get("child_choice")),
-            "child_med_conditions": request.form.get("child_med_conditions")
-        }
+    
+    #     update_child = {
+    #         "username": session["user"],
+    #         "childfname": request.form.get("childfname"),
+    #         "childlname": request.form.get("childlname"),
+    #         "date_of_birth": request.form.get("date_of_birth"),
+    #         "school_name": request.form.get("school_name"),
+    #         "school_year": request.form.get("school_year"),
+    #         "child_choice": list(request.form.get("child_choice")),
+    #         "child_med_conditions": request.form.get("child_med_conditions")
+    #     }
 
-        mongo.db.kids.replace_one({"_id": ObjectId(kids["_id"])}, update_child)
+    #     mongo.db.kids.replace_one({"_id": ObjectId(kids["_id"])}, update_child)
         
-    flash("Your Child's Details have been Successfully Updated")
+    # flash("Your Child's Details have been Successfully Updated")
     return redirect(url_for("profile", username=session["user"]))
 
 

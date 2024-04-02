@@ -56,7 +56,7 @@
 
 
     // Handle Edit Button Click
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('click', function () {
     const editButtons = document.querySelectorAll('.edit-child-btn');
 
     editButtons.forEach(button => {

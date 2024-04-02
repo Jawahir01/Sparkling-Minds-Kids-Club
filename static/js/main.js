@@ -55,27 +55,30 @@
     });
 
 
-    //Handle Edit Button Click
-    document.addEventListener('DOMContentLoaded', function () {
-        const editButtons = document.querySelectorAll('.edit-child-btn');
+    // Handle Edit Button Click
+document.addEventListener('DOMContentLoaded', function () {
+    const editButtons = document.querySelectorAll('.edit-child-btn');
 
-        editButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const childId = this.dataset.childId;
-                fetchEditModalContent(childId);
-            });
-        });
+    editButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const childId = this.dataset.childId;
+            const editModal = document.getElementById('editModal');
+            
+            // Update the edit modal's content with a loading indicator
+            editModal.querySelector('.modal-body').innerHTML = '<div>Loading...</div>';
 
-        function fetchEditModalContent(childId) {
+            // Fetch the edit modal content directly from the server using a normal form submission
             fetch(`/edit_child/${childId}`)
                 .then(response => response.text())
                 .then(data => {
-                    const modalContent = document.querySelector('.modal-content');
-                    modalContent.innerHTML = data;
+                    // Update the edit modal's content with the fetched HTML
+                    editModal.querySelector('.modal-body').innerHTML = data;
                 })
                 .catch(error => console.error('Error fetching edit modal content:', error));
-        }
+        });
     });
+});
+
 
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({

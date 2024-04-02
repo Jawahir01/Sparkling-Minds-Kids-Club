@@ -43,11 +43,11 @@ see the below table for the results.
 No errors or warnings were found when passing through the official W3C validator. This checking was done manually by copying the view page source code (Ctrl+U) and pasting it into the validator.
     - 	CSS Validation:
 Full CSS Validation Report
-No errors or warnings were found when passing through the official W3C (Jigsaw) validator except for the warnings about the use of css root variables and webkits for the box-shadow. However, css code works perfectly on various devices.
+No errors or warnings were found when passing through the official W3C (Jigsaw) .
 
     -	JS Validation:
 Full JS Validation Report
-No errors or warning messages were found when passing through the official JSHint validator. However, the validator has pointed out that the module variable is not used, but this variable is needed for automated testing. Needless to say, as the modern js syntax was used (the Optional Chaining method - ?.) /* jshint esversion: 11 */ was added to the top of the file.
+No errors or warning messages were found when passing through the official JSHint validator
 
     -	Python Validation:
 Full Python Validation Report
@@ -56,16 +56,22 @@ No errors were found when the code was passed through an online validation tool.
 
 - ## Lighthouse Report
     -	Home page
+         ![Home](static/img/Doc/testing/home.png)
     -	Courses Page
+        ![Courses](static/img/Doc/testing/courses.png)
     -	Register Page
+        ![Register](static/img/Doc/testing/register.png)
     -	Sign in Page
+        ![signin](static/img/Doc/testing/signin.png)
     -	Profile Page
+        ![Profile](static/img/Doc/testing/profile.png)
     -	Contact Us Page
+        ![Contact-us](static/img/Doc/testing/contact-us.png)
     -	Thank You Page
+        ![Thank-you-page](static/img/Doc/testing/thank-you.png)
+
 
 - ## Compatibility
 	Testing was conducted on Chrome’s browser:
     - Chrome 
     - Firfox
-        
-        **random screenshoots of the website**

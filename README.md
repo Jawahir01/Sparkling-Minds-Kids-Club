@@ -325,7 +325,7 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
     
     The project will now have been cloned on your local machine for use.
 
-#### The Live Link: https://sparkling-minds-ffd249568f6d.herokuapp.com/
+#### **The Live Link:** https://sparkling-minds-ffd249568f6d.herokuapp.com/
 
 
 # Credits
@@ -337,9 +337,9 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
 - [jeda.ai](https://go.jeda.ai/): was used to make wireframes for the website.
 
 # Acknowledgments
-  - **[Iuliia Konovalova]()** :
-  - **[Manu Perez]()** : 
-  - **[Ussama Youssif](https://www.linkedin.com/in/ussama-youssif-59bb94105/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)** :
-  - **[community-london in Slack and WhatsApp]()**: 
-  - **[Student Care]()** :
+  - **[Iuliia Konovalova](https://github.com/IuliiaKonovalova)** :My Mentor Guidance at Code Institute for her professional teaching and helping throughout the project time.
+  - **[Manu Perez](https://github.com/Manuperezro)** : My supervisor at City of Bristol College for his patience, support and encouragement all the time.
+  - **[Ussama Youssif](https://www.linkedin.com/in/ussama-youssif-59bb94105/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)** : For his exceptional contribution and creative input in designing the logo for my project.
+  - **[community-london in Slack and WhatsApp](https://app.slack.com/client/T0L30B202/CU0RJPEBF)**: for their continuous support and availability. Special thanks to [Erikas Ramanauskas](https://github.com/Erikas-Ramanauskas?tab=repositories) for his dedicated efforts in assisting with code-related issues
+  - **[Student Care](https://learn.codeinstitute.net/ci_support/level5diplomainwebappdevelopment/studentcare)** :for their support.
   - **[Gareth-McGirr]()** :a GitHub user whose Portfolio-Project-4-SizzleAndSteak project inspired me to create my README file.

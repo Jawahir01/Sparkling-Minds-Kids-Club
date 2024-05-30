@@ -162,19 +162,22 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
     courses = list(mongo.db.courses.find())
+    children = list(mongo.db.kids.find({'username': username}))
+    
+    # Initialize child variable
+    child = None
 
-    if session["user"]:
-        
-        children = list(mongo.db.kids.find({'username': username}))
+    # Attempt to find the kids_id from the request parameters
+    kids_id = request.args.get("kids_id")
+    if kids_id:
+        try:
+            child = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
+        except InvalidId:
+            flash("Invalid child ID")
 
-        # Attempt to find the kids_id from the request parameters
-        kids_id = request.args.get('kids_id')
-        child = list(mongo.db.kids.find({"_id": ObjectId(kids_id)})
-)
-    return render_template("profile.html", username=username,
-        children=children, child=child, courses=courses)
+    return render_template("profile.html", username=username, children=children, 
+        child=child, courses=courses)
 
 
 # Age Function
@@ -219,7 +222,7 @@ def add_child():
                 "child_med_conditions": child_med_conditions
             }
             mongo.db.kids.insert_one(child)
-            flash("Your Child hass been added successfully!")
+            flash("Your Child has been added successfully!")
 
         else:
             flash("Unfortunately, you\'re age is not qualified for our club")
@@ -228,47 +231,32 @@ def add_child():
     return redirect(url_for("profile", username=session["user"]))
 
 
+# Edit Child route
 @app.route("/edit_child/<kids_id>", methods=["GET", "POST"])
 def edit_child(kids_id):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    username = mongo.db.users.find_one({"username": session["user"]})["username"]
     courses = list(mongo.db.courses.find())
     children = list(mongo.db.kids.find({'username': username}))
-    child = list(mongo.db.kids.find({"_id": ObjectId(kids_id)}))
+    child = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
+
     if request.method == "POST":
-        if child: 
-            kid ={
-                username : session["user"],
-                _id: child.get(ObjectId(kids_id)),
-                childfname : child.get("childfname"),
-                childlname : child.get("childlname"),
-                date_of_birth : child.get("date_of_birth"),
-                school_name : child.get("school_name"),
-                school_year : child.get("school_year"),
-                child_choice : child.getlist("child_choice"),
-                child_med_conditions : child.get("child_med_conditions")
-            }
+        update_child = {
+            "username": session["user"],
+            "childfname": request.form.get("childfname"),
+            "childlname": request.form.get("childlname"),
+            "date_of_birth": request.form.get("date_of_birth"),
+            "school_name": request.form.get("school_name"),
+            "school_year": request.form.get("school_year"),
+            "child_choice": request.form.getlist("child_choice"),
+            "child_med_conditions": request.form.get("child_med_conditions")
+        }
+        mongo.db.kids.replace_one({"_id": ObjectId(kids_id)}, update_child)
+        flash("Your Child's Details have been Successfully Updated")
+        return redirect(url_for("profile", username=session["user"]))
 
-    # update child details
-    
-    #     update_child = {
-    #         "username": session["user"],
-    #         "childfname": request.form.get("childfname"),
-    #         "childlname": request.form.get("childlname"),
-    #         "date_of_birth": request.form.get("date_of_birth"),
-    #         "school_name": request.form.get("school_name"),
-    #         "school_year": request.form.get("school_year"),
-    #         "child_choice": list(request.form.get("child_choice")),
-    #         "child_med_conditions": request.form.get("child_med_conditions")
-    #     }
-
-    #     mongo.db.kids.replace_one({"_id": ObjectId(kids["_id"])}, update_child)
-        
-    # flash("Your Child's Details have been Successfully Updated")
     return redirect(url_for("profile", username=session["user"]))
 
-
+# Delete Child route
 @app.route("/delete_child/<kids_id>")
 def delete_child(kids_id):
     mongo.db.kids.delete_one({"_id": ObjectId(kids_id)})

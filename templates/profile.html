@@ -1,766 +1,449 @@
 {% extends "base.html" %}
-  {% block content %}
+{% block content %}
 
 
-    <div class="container-xxl bg-white p-0">
-      <!-- Spinner Start -->
-      <div
-        id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
-      >
-        <div
-          class="spinner-border text-primary"
-          style="width: 3rem; height: 3rem"
-          role="status"
-        >
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-      <!-- Spinner End -->
+<div class="container-xxl bg-white p-0">
+  <!-- Spinner Start -->
+  <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <!-- Spinner End -->
 
-      <!-- Navbar Start -->
-      <nav
-        class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0"
-      >
-        <a href="{{ url_for('index') }}" class="navbar-brand">
-          <h3 class="m-0" style="color: #2815b9">
-            <img alt="photo"
-              src="{{ url_for('static', filename='img/logo.png')}}"
-              class="logo me-3"
-            />Sparkilng Minds Club
-          </h3>
-        </a>
-        <button
-          type="button"
-          class="navbar-toggler"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav mx-auto">
-            <a href="{{ url_for('index') }}" class="nav-item nav-link">Home</a>
-            <div class="nav-item dropdown">
-              <a
-                href="#"
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                >Features</a
-              >
-              <div
-                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
-              >
-                <a href="{{ url_for('index') }}" class="dropdown-item"
-                  >About Us</a
-                >
-                <a href="{{ url_for('index') }}" class="dropdown-item"
-                  >Gallery</a
-                >
-                <a href="{{ url_for('index') }}" class="dropdown-item"
-                  >Teachers</a
-                >
-                <a href="{{ url_for('index') }}" class="dropdown-item"
-                  >Testimonial</a
-                >
-              </div>
-            </div>
-            <a href="{{ url_for('courses') }}" class="nav-item nav-link"
-              >Courses</a
-            >
-            <a href="{{ url_for('contact_us') }}" class="nav-item nav-link"
-              >Contact Us</a
-            >
-
-            <div class="nav-item nav-link dropdown" style="left: 23%">
-              <a
-                href="#"
-                class="btn btn-primary rounded-pill px-3 dropdown-toggle"
-                data-bs-toggle="dropdown"
-              >
-                {% if session.user %} {{ username }}<i
-                  class="fa fa-user ms-3"
-                ></i>
-                {% else %}
-                <i class="fa fa-user ms-3"></i>
-                {% endif %}
-              </a>
-              {% if session.user %}
-              <div
-                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
-              >
-                <a
-                  class="dropdown-item active"
-                  href="{{ url_for('profile', username=session['user']) }}"
-                >
-                  Profile</a
-                >
-                <hr class="dropdown-divider" />
-                <a href="{{ url_for('signout') }}" class="dropdown-item"
-                  >Singout</a
-                >
-              </div>
-              {% else %}
-              <div
-                class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0"
-              >
-                <a href="{{ url_for('signin') }}" class="dropdown-item"
-                  >Singin</a
-                >
-                <hr class="dropdown-divider" />
-                <a href="{{ url_for('register') }}" class="dropdown-item"
-                  >Register</a
-                >
-              </div>
-              {% endif %}
-            </div>
+  <!-- Navbar Start -->
+  <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+    <a href="{{ url_for('index') }}" class="navbar-brand">
+      <h3 class="m-0" style="color: #2815b9">
+        <img alt="photo" src="{{ url_for('static', filename='img/logo.png')}}" class="logo me-3" />Sparkilng Minds Club
+      </h3>
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav mx-auto">
+        <a href="{{ url_for('index') }}" class="nav-item nav-link">Home</a>
+        <div class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Features</a>
+          <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+            <a href="{{ url_for('index') }}" class="dropdown-item">About Us</a>
+            <a href="{{ url_for('index') }}" class="dropdown-item">Gallery</a>
+            <a href="{{ url_for('index') }}" class="dropdown-item">Teachers</a>
+            <a href="{{ url_for('index') }}" class="dropdown-item">Testimonial</a>
           </div>
         </div>
-      </nav>
-      <!-- Navbar End -->
+        <a href="{{ url_for('courses') }}" class="nav-item nav-link">Courses</a>
+        <a href="{{ url_for('contact_us') }}" class="nav-item nav-link">Contact Us</a>
 
-      <!-- Profile Start -->
-      <div class="container-xxl py-2 pt-5">
-        <div class="container">
-          <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="row">
-              <div class="col-8">
-                <h6 class="py-1 mb-3">Click to Add Your Child/Children</h6>
-                <p class="mb-0">
-                  Please note: To optimize your child's experience, you may
-                  select a maximum of four courses or sports for enrollment per
-                  academic year.
-                </p>
+        <div class="nav-item nav-link dropdown" style="left: 23%">
+          <a href="#" class="btn btn-primary rounded-pill px-3 dropdown-toggle" data-bs-toggle="dropdown">
+            {% if session.user %} {{ username }}<i class="fa fa-user ms-3"></i>
+            {% else %}
+            <i class="fa fa-user ms-3"></i>
+            {% endif %}
+          </a>
+          {% if session.user %}
+          <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+            <a class="dropdown-item active" href="{{ url_for('profile', username=session['user']) }}">
+              Profile</a>
+            <hr class="dropdown-divider" />
+            <a href="{{ url_for('signout') }}" class="dropdown-item">Singout</a>
+          </div>
+          {% else %}
+          <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+            <a href="{{ url_for('signin') }}" class="dropdown-item">Singin</a>
+            <hr class="dropdown-divider" />
+            <a href="{{ url_for('register') }}" class="dropdown-item">Register</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar End -->
+
+  <!-- Profile Start -->
+  <div class="container-xxl py-2 pt-5">
+    <div class="container">
+      <div class="mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="row">
+          <div class="col-8">
+            <h6 class="py-1 mb-3">Click to Add Your Child/Children</h6>
+            <p class="mb-0">
+              Please note: To optimize your child's experience, you may
+              select a maximum of four courses or sports for enrollment per
+              academic year.
+            </p>
+          </div>
+          <div class="col-2" style="position: absolute; left: 70%">
+            <button class="btn btn-primary w-80 py-3" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fa fa-plus"></i> Add Child
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile ends -->
+
+  <section>
+    <!-- flash messages -->
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div class="container">
+      <div class="text-center mx-auto mb-2 wow fadeInUp" data-wow-delay="0.1s" id="messages" style="
+              max-width: 400px;
+              height: auto;
+              border: solid 1px #375d24;
+              background-color: #60e32d6b;
+            ">
+        <h5 class="facility-text fs-6 py-2" style="color: #225d0bb0">
+          {{ message }}
+        </h5>
+      </div>
+    </div>
+    {% endfor %} {% endif %} {% endwith %}
+  </section>
+
+  <!-- Child Form -->
+  <div class="container-xxl py-4">
+    <div class="container">
+      <div class="collapse" id="collapseExample">
+        <form class="card card-body bg-light rounded" method="POST" action="{{ url_for('add_child')}}">
+          <div class="row g-3">
+            <!-- Child First Name -->
+            <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="child_name" class="form-label text-dark">Child Name:
+                </label>
               </div>
-              <div class="col-2" style="position: absolute; left: 70%">
-                <button
-                  class="btn btn-primary w-80 py-3"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseExample"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
-                >
-                  <i class="fa fa-plus"></i> Add Child
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <input type="text" name="childfname" class="form-control validate" placeholder="First name"
+                  aria-label="First name" minlength="3" maxlength="15" pattern="^[A-Za-z]{1,15}$" required />
+              </div>
+              <!-- Child Last Name -->
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <input type="text" name="childlname" class="form-control validate" placeholder="Last name"
+                  aria-label="Last name" minlength="3" maxlength="15" pattern="^[A-Za-z]{1,15}$" required />
+              </div>
+            </div>
+            <!-- Child Date of Birth -->
+            <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="date_of_birth" class="form-label text-dark">Date of Birth:
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <input type="date" name="date_of_birth" class="form-control" placeholder="DD/MM/YYYY"
+                  aria-label="date-of-birth" class="validate" required />
+              </div>
+            </div>
+            <!-- Child's School Name -->
+            <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="school_name" class="form-label text-dark">School Name:
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <input type="text" name="school_name" class="form-control" placeholder="School Name"
+                  aria-label="School Name" class="validate" required />
+              </div>
+            </div>
+            <!-- Child's School Year -->
+            <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="school_year" class="form-label text-dark">School Year:
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <select class="form-select" name="school_year" aria-label="Default select example" class="validate"
+                  required>
+                  <option selected>
+                    Choose Your Child's Academic Year
+                  </option>
+                  <option value="Year 1">Year 1</option>
+                  <option value="Year 2">Year 2</option>
+                  <option value="Year 3">Year 3</option>
+                  <option value="Year 4">Year 4</option>
+                  <option value="Year 5">Year 5</option>
+                  <option value="Year 6">Year 6</option>
+                  <option value="Year 7">Year 7</option>
+                  <option value="Year 8">Year 8</option>
+                  <option value="Year 9">Year 9</option>
+                </select>
+              </div>
+            </div>
+            <!-- Child's Course Choise -->
+            <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="child_choice" class="form-label text-dark">
+                  Choose Your Child's interests Course/Sport:
+                  <a href="#" data-toggle="tooltip" data-placement="right" title="Remmeber to select only 4 "><i
+                      class="fab bi-exclamation-circle-fill"></i></a>
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12" id="child_choice">
+                {% for choice in courses %}
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" name="child_choice" type="checkbox" id="{{ choice }}"
+                    value="{{ choice.course_name  }}" onclick="limitCheckboxSelection()" />
+                  <label class="form-check-label" for="{{ choice.course_name }}">{{ choice.course_name }}</label>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <!-- Child's Medical Condetion -->
+            <div class="row g-2">
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <label for="child_med_conditions" class="form-label text-dark">
+                  Does your child suffer from any medical
+                  conditions/allergies that the club should be aware of?
+                </label>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <textarea name="child_med_conditions" class="form-control" placeholder="Please explain here"
+                  aria-label="With textarea" class="validate" required>
+                    </textarea>
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="col-lg-3 col-md-12 col-sm-12">
+              <button type="submit" class="btn btn-outline-success">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <!-- Display Child Details -->
+  <div class="container-xxl py-2">
+    <div class="container">
+      <div class="row">
+        {% for child in children %}
+        <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="card mb-3" style="max-width: 540px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <div class="row g-0">
+                  <img src="{{ url_for('static', filename='img/logo-2.png') }}"
+                    class="img-fluid rounded-circle col-md-12 col-sm-12" alt="avatar1" />
+                </div>
+                <div class="row g-0">
+                  <h5 class="card-title py-4 text-center">{{ child.childfname }} {{ child.childlname }}</h5>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card_title py-3 text-center">Child's Informations</h4>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Date of Birth: </strong>{{ child.date_of_birth }}</li>
+                    <li class="list-group-item"><strong>School Name: </strong>{{ child.school_name }}</li>
+                    <li class="list-group-item"><strong>School Year: </strong>{{ child.school_year }}</li>
+                    <li class="list-group-item"><strong>Course/Sport: </strong>{% for choice in child.child_choice %} -
+                      {{
+                      choice }} {% endfor %}</li>
+                    <li class="list-group-item"><strong>Medical Conditions: </strong>{{ child.child_med_conditions }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Delete + Edit Button /trigger modal/ -->
+            <div class="row g-0">
+              <div class="col-6 d-md-flex justify-content-md-end py-2">
+                <a href="{{ url_for('delete_child', kids_id=child._id) }}" class="btn btn-secondary btn-sm lighten-1"
+                  role="button">Delete Child</a>
+              </div>
+              <div class="col-6 d-md-flex justify-content-md-end py-2">
+                <button class="btn btn-primary btn-sm lighten-1" role="button" data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop" data-id="{{ child._id }}" data-childfname="{{ child.childfname }}"
+                  data-childlname="{{ child.childlname }}" data-date_of_birth="{{ child.date_of_birth }}"
+                  data-school_name="{{ child.school_name }}" data-school_year="{{ child.school_year }}"
+                  data-child_choice="{{ child.child_choice | join(',') }}"
+                  data-child_med_conditions="{{ child.child_med_conditions }}">
+                  Edit Child
                 </button>
               </div>
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
-
-      <!-- Profile ends -->
-
-      <section>
-        <!-- flash messages -->
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <div class="container">
-          <div
-            class="text-center mx-auto mb-2 wow fadeInUp"
-            data-wow-delay="0.1s"
-            id="messages"
-            style="
-              max-width: 400px;
-              height: auto;
-              border: solid 1px #375d24;
-              background-color: #60e32d6b;
-            "
-          >
-            <h5 class="facility-text fs-6 py-2" style="color: #225d0bb0">
-              {{ message }}
-            </h5>
-          </div>
-        </div>
-        {% endfor %} {% endif %} {% endwith %}
-      </section>
-
-      <!-- Child Form -->
-      <div class="container-xxl py-4">
-        <div class="container">
-          <div class="collapse" id="collapseExample">
-            <form
-              class="card card-body bg-light rounded"
-              method="POST"
-              action="{{ url_for('add_child')}}"
-            >
-              <div class="row g-3">
-                <!-- Child First Name -->
-                <div class="row g-2">
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <label for="child_name" class="form-label text-dark"
-                      >Child Name:
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <input
-                      type="text"
-                      id="childfname"
-                      name="childfname"
-                      class="form-control validate"
-                      placeholder="First name"
-                      aria-label="First name"
-                      minlength="3"
-                      maxlength="15"
-                      pattern="^[A-Za-z]{1,15}$"
-                      required
-                    />
-                  </div>
-                  <!-- Child Last Name -->
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <input
-                      type="text"
-                      id="childlname"
-                      name="childlname"
-                      class="form-control validate"
-                      placeholder="Last name"
-                      aria-label="Last name"
-                      minlength="3"
-                      maxlength="15"
-                      pattern="^[A-Za-z]{1,15}$"
-                      required
-                    />
-                  </div>
-                </div>
-                <!-- Child Date of Birth -->
-                <div class="row g-2">
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <label for="date_of_birth" class="form-label text-dark"
-                      >Date of Birth:
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <input
-                      type="date"
-                      id="date_of_birth"
-                      name="date_of_birth"
-                      class="form-control"
-                      placeholder="DD/MM/YYYY"
-                      aria-label="date-of-birth"
-                      class="validate"
-                      required
-                    />
-                  </div>
-                </div>
-                <!-- Child's School Name -->
-                <div class="row g-2">
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <label for="school_name" class="form-label text-dark"
-                      >School Name:
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <input
-                      type="text"
-                      id="school_name"
-                      name="school_name"
-                      class="form-control"
-                      placeholder="School Name"
-                      aria-label="School Name"
-                      class="validate"
-                      required
-                    />
-                  </div>
-                </div>
-                <!-- Child's School Year -->
-                <div class="row g-2">
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <label for="school_year" class="form-label text-dark"
-                      >School Year:
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <select
-                      class="form-select"
-                      id="school_year"
-                      name="school_year"
-                      aria-label="Default select example"
-                      class="validate"
-                      required
-                    >
-                      <option selected>
-                        Choose Your Child's Academic Year
-                      </option>
-                      <option value="Year 1">Year 1</option>
-                      <option value="Year 2">Year 2</option>
-                      <option value="Year 3">Year 3</option>
-                      <option value="Year 4">Year 4</option>
-                      <option value="Year 5">Year 5</option>
-                      <option value="Year 6">Year 6</option>
-                      <option value="Year 7">Year 7</option>
-                      <option value="Year 8">Year 8</option>
-                      <option value="Year 9">Year 9</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- Child's Course Choise -->
-                <div class="row g-2">
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <label for="child_choice" class="form-label text-dark">
-                      Choose Your Child's interests Course/Sport:
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Remmeber to select only 4 "
-                        ><i class="fab bi-exclamation-circle-fill"></i
-                      ></a>
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12" id="child_choice">
-                    {% for choice in courses %}
-                    <div class="form-check form-check-inline">
-                      <input
-                        class="form-check-input"
-                        name="child_choice"
-                        type="checkbox"
-                        id="{{ choice }}"
-                        value="{{ choice.course_name  }}"
-                        onclick="limitCheckboxSelection()"
-                      />
-                      <label
-                        class="form-check-label"
-                        for="{{ choice.course_name }}"
-                        >{{ choice.course_name }}</label
-                      >
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
-                <!-- Child's Medical Condetion -->
-                <div class="row g-2">
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <label
-                      for="child_med_conditions"
-                      class="form-label text-dark"
-                    >
-                      Does your child suffer from any medical
-                      conditions/allergies that the club should be aware of?
-                    </label>
-                  </div>
-                  <div class="col-lg-4 col-md-12 col-sm-12">
-                    <textarea
-                      id="child_med_conditions"
-                      name="child_med_conditions"
-                      class="form-control"
-                      placeholder="Please explain here"
-                      aria-label="With textarea"
-                      class="validate"
-                      required
-                    >
-                    </textarea>
-                  </div>
-                </div>
-                <!-- Submit Button -->
-                <div class="col-lg-3 col-md-12 col-sm-12">
-                  <button type="submit" class="btn btn-outline-success">
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <br />
-
-      <!-- Display Child Details -->
-      <div class="container-xxl py-2">
-        <div class="container">
-          <div class="row">
-            {% for child in children %}
-            <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-              <div class="card mb-3" style="max-width: 540px">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <div class="row g-0">
-                      <img alt="photo"
-                        src="{{ url_for('static', filename='img/logo-2.png') }}"
-                        class="img-fluid rounded-circle col-md-12 col-sm-12"
-                        alt="avatar1"
-                      />
-                    </div>
-                    <div class="row g-0">
-                      <h5 class="card-title py-4 text-center">
-                        {{ child.childfname }} {{ child.childlname }}
-                      </h5>
-                    </div>
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h4 class="card_title py-3 text-center">
-                        Child's Informations
-                      </h4>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                          <strong>Date of Birth: </strong>{{ child.date_of_birth
-                          }}
-                        </li>
-                        <li class="list-group-item">
-                          <strong>School Name: </strong>{{ child.school_name }}
-                        </li>
-                        <li class="list-group-item">
-                          <strong>School Year: </strong>{{ child.school_year }}
-                        </li>
-                        <li class="list-group-item">
-                          <strong>Course/Sport: </strong>
-                          {% for choice in child.child_choice%} - {{ choice }}
-                          {%endfor%}
-                        </li>
-                        <li class="list-group-item">
-                          <strong>Medical Conditions: </strong>{{
-                          child.child_med_conditions }}
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <!-- Delete + Edit Button /trigger modal/ -->
-                <div class="row g-0">
-                  <div class="col-6 d-md-flex justify-content-md-end py-2">
-                    <a
-                      href="{{ url_for('delete_child', kids_id=child._id) }}"
-                      class="btn btn-secondary btn-sm lighten-1"
-                      role="button"
-                    >
-                      Delete Child</a
-                    >
-                  </div>
-                  <div class="col-6 d-md-flex justify-content-md-end py-2">
-                    <a
-                    href="#" class="btn btn-primary btn-sm lighten-1 edit-child-btn" role="button"
-                    data-child-id="{{ child._id }}" data-bs-toggle="modal" data-bs-target="#editModal">
-                      Edit Child</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endfor%}
-          </div>
-        </div>
-      </div>
-
-      <!-- Edit Form Modal -->
-      <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
- 
-
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                  Edit Child Details
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              
-                <div class="modal-body">
-                  <form action="{{ url_for('edit_child', kids_id=child._id) }}" method="POST">
-                    <div class="row g-3">
-                      <label for="child_name" class="form-label">Child Name: </label>
-                      <div class="col-4">
-                        <input
-                          type="text"
-                          id="childfname"
-                          name="childfname"
-                          class="form-control validate"
-                          placeholder="First name"
-                          aria-label="First name"
-                          minlength="3"
-                          maxlength="15"
-                          pattern="^[A-Za-z]{1,15}$"
-                          value="{{ child.childfname }}"
-                          required
-                        />
-                      </div>
-                      <div class="col-4">
-                        <input
-                          type="text"
-                          id="childlname"
-                          name="childlname"
-                          class="form-control validate"
-                          placeholder="Last name"
-                          aria-label="Last name"
-                          minlength="3"
-                          maxlength="15"
-                          pattern="^[A-Za-z]{1,15}$"
-                          value="{{ child.childlname }}"
-                          required
-                        />
-                      </div>
-                      <label for="date_of_birth" class="form-label"
-                        >Date of Birth:
-                      </label>
-                      <div class="col-auto">
-                        <input
-                          type="date"
-                          id="date_of_birth"
-                          name="date_of_birth"
-                          class="form-control"
-                          placeholder="DD/MM/YYYY"
-                          aria-label="date-of-birth"
-                          class="validate"
-                          value="{{ child.date_of_birth}}"
-                          required
-                        />
-                      </div>
-                      <label for="school_name" class="form-label">School Name: </label>
-                      <div class="col-6">
-                        <input
-                          type="text"
-                          id="school_name"
-                          name="school_name"
-                          class="form-control"
-                          placeholder="School Name"
-                          aria-label="School Name"
-                          class="validate"
-                          value="{{ child.school_name}}"
-                          required
-                        />
-                      </div>
-                      <label for="school_year" class="form-label">School Year: </label>
-                      <div class="col-auto">
-                        <select
-                          class="form-select"
-                          id="school_year"
-                          name="school_year"
-                          aria-label="Default select example"
-                          class="validate"
-                          
-                          required
-                        >
-                          <option >Choose your Child's Academic Year</option>
-                            <option value="Year 1">Year 1</option>
-                            <option value="Year 2">Year 2</option>
-                            <option value="Year 3">Year 3</option>
-                            <option value="Year 4">Year 4</option>
-                            <option value="Year 5">Year 5</option>
-                            <option value="Year 6">Year 6</option>
-                            <option value="Year 7">Year 7</option>
-                            <option value="Year 8">Year 8</option>
-                            <option value="Year 9">Year 9</option>
-                          </select>
-                      </div>
-                      <label for="child_choice" class="form-label"
-                        >Choose Your interested Course/Sport:
-                      </label>
-                      <div class="col-5" id="child_choice">
-                        {% for choice in courses %}
-                        <div class="form-check form-check-inline col-md-12 col-sm-12">
-                          <input
-                            class="form-check-input"
-                            name="child_choice"
-                            type="checkbox"
-                            id="{{ choice }}"
-                            value="{{ choice.course_name  }}"
-                            onclick="limitCheckboxSelection()"
-                          />
-                          <label
-                            class="form-check-label"
-                            for="{{ choice.course_name }}"
-                            >{{ choice.course_name }}</label
-                          >
-                        </div>
-                        {% endfor %}
-                      </div>
-                      <label for="child_med_conditions" class="form-label">
-                        Does your child suffer from any medical conditions/allergies that
-                        the club should be aware of?
-                      </label>
-                      <div class="col">
-                        <textarea
-                          id="child_med_conditions"
-                          name="child_med_conditions"
-                          class="form-control"
-                          placeholder="Please explain here"
-                          aria-label="With textarea"
-                          class="validate"
-                          value="{{child.child_med_conditions}}"
-                          required
-                        >{{child.child_med_conditions}}"
-                        </textarea>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button type="submit" class="btn btn-outline-success">
-                    Save Changes
-                  </button>
-                </div>
-              
-            </div>
-          </div>
-      </div>
-
-      <!-- Footer Start -->
-      <div
-        class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn"
-        data-wow-delay="0.1s"
-      >
-        <div class="container py-5">
-          <div class="row g-5">
-            <div class="col-lg-4 col-md-6">
-              <h3 class="text-white mb-4">Get In Touch</h3>
-              <p class="mb-2">
-                <i class="fa fa-map-marker-alt me-3"></i>123 Road, London,
-                United Kingdom
-              </p>
-              <p class="mb-2">
-                <i class="fa fa-phone-alt me-3"></i>+44 012 345 67890
-              </p>
-              <p class="mb-2">
-                <i class="fa fa-envelope me-3"></i>info@sparkling-minds.com
-              </p>
-              <div class="d-flex pt-2">
-                <a
-                  class="btn btn-outline-light btn-social"
-                  href="http://www.twitter.com"
-                  target="_blank"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light btn-social"
-                  href="http://www.facebook.com"
-                  target="_blank"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light btn-social"
-                  href="http://www.youtube.com"
-                  target="_blank"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-                <a
-                  class="btn btn-outline-light btn-social"
-                  href="http://www.linkedin.com"
-                  target="_blank"
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <h3 class="text-white mb-4">Quick Links</h3>
-              <a
-                class="btn btn-link text-white-50"
-                href="{{ url_for('index') }}"
-                >About Us</a
-              >
-              <a
-                class="btn btn-link text-white-50"
-                href="{{ url_for('contact_us') }}"
-                >Contact Us</a
-              >
-              <a
-                class="btn btn-link text-white-50"
-                href="{{ url_for('index') }}"
-                >Our Teachers</a
-              >
-              <a
-                class="btn btn-link text-white-50"
-                href="{{url_for('courses')}}"
-                >Our Courses</a
-              >
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <h3 class="text-white mb-4">Photo Gallery</h3>
-              <div class="row g-2 pt-2">
-                <div class="col-4">
-                  <img alt="photo"
-                    class="img-fluid rounded bg-light p-1"
-                    src="{{ url_for('static', filename='img/photo4.jpg') }}"
-                    alt=""
-                  />
-                </div>
-                <div class="col-4">
-                  <img alt="photo"
-                    class="img-fluid rounded bg-light p-1"
-                    src="{{ url_for('static', filename='img/photo12.jpg') }}"
-                    alt=""
-                  />
-                </div>
-                <div class="col-4">
-                  <img alt="photo"
-                    class="img-fluid rounded bg-light p-1"
-                    src="{{ url_for('static', filename='img/photo14.jpg') }}"
-                    alt=""
-                  />
-                </div>
-                <div class="col-4">
-                  <img alt="photo"
-                    class="img-fluid rounded bg-light p-1"
-                    src="{{ url_for('static', filename='img/photo18.jpg') }}"
-                    alt=""
-                  />
-                </div>
-                <div class="col-4">
-                  <img alt="photo"
-                    class="img-fluid rounded bg-light p-1"
-                    src="{{ url_for('static', filename='img/swimming.jpg') }}"
-                    alt=""
-                  />
-                </div>
-                <div class="col-4">
-                  <img alt="photo"
-                    class="img-fluid rounded bg-light p-1"
-                    src="{{ url_for('static', filename='img/photo2.jpg') }}"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="copyright">
-            <div class="row">
-              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy;
-                <a href="#">
-                  <img alt="photo"
-                    src="{{ url_for('static', filename='img/logo-2.png')}}"
-                  />
-                  Sparkilng Minds Club</a
-                >, All Right Reserved. Designed By
-                <a
-                  class="border-bottom"
-                  href="https://htmlcodex.com"
-                  target="_blank"
-                  >HTML Codex</a
-                >
-                <br />Distributed By:
-                <a
-                  class="border-bottom"
-                  href="https://themewagon.com"
-                  target="_blank"
-                  >ThemeWagon</a
-                >
-              </div>
-              <div class="col-md-6 text-center text-md-end">
-                <div class="footer-dev">
-                  <a class="border-bottom" href="#" target="_blank"
-                    >Meet the Site Developer</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Footer End -->
-
-      <!-- Back to Top -->
-      <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
-        ><i class="bi bi-arrow-up"></i
-      ></a>
     </div>
+  </div>
 
-    {% endblock %}
+  <!-- Edit Form Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Child Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editForm" method="POST">
+            <!-- form fields -->
+            <div class="row g-3">
+              <label for="child_name" class="form-label">Child Name: </label>
+              <div class="col-4">
+                <input type="text" id="childfname" name="childfname" class="form-control validate"
+                  placeholder="First name" minlength="3" maxlength="15" pattern="^[A-Za-z]{1,15}$" required />
+              </div>
+              <div class="col-4">
+                <input type="text" id="childlname" name="childlname" class="form-control validate"
+                  placeholder="Last name" minlength="3" maxlength="15" pattern="^[A-Za-z]{1,15}$" required />
+              </div>
+              <label for="date_of_birth" class="form-label">Date of Birth: </label>
+              <div class="col-auto">
+                <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required />
+              </div>
+              <label for="school_name" class="form-label">School Name: </label>
+              <div class="col-6">
+                <input type="text" id="school_name" name="school_name" class="form-control" placeholder="School Name"
+                  required />
+              </div>
+              <label for="school_year" class="form-label">School Year: </label>
+              <div class="col-auto">
+                <select class="form-select" id="school_year" name="school_year" required>
+                  <option selected>Choose your Child's Academic Year</option>
+                  <option value="Year 1">Year 1</option>
+                  <option value="Year 2">Year 2</option>
+                  <option value="Year 3">Year 3</option>
+                  <option value="Year 4">Year 4</option>
+                  <option value="Year 5">Year 5</option>
+                  <option value="Year 6">Year 6</option>
+                  <option value="Year 7">Year 7</option>
+                  <option value="Year 8">Year 8</option>
+                  <option value="Year 9">Year 9</option>
+                </select>
+              </div>
+              <label for="child_choice" class="form-label">Choose Your interested Course/Sport: </label>
+              <div class="col-5" id="child_choice">
+                {% for choice in courses %}
+                <div class="form-check form-check-inline col-md-12 col-sm-12">
+                  <input class="form-check-input" name="child_choice" type="checkbox" id="{{ choice.course_name }}"
+                    value="{{ choice.course_name }}" />
+                  <label class="form-check-label" for="{{ choice.course_name }}">{{ choice.course_name }}</label>
+                </div>
+                {% endfor %}
+              </div>
+              <label for="child_med_conditions" class="form-label">Does your child suffer from any medical
+                conditions/allergies that the club should be aware of?</label>
+              <div class="col">
+                <textarea id="child_med_conditions" name="child_med_conditions" class="form-control"
+                  placeholder="Please explain here" required></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-outline-success">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer Start -->
+  <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+      <div class="row g-5">
+        <div class="col-lg-4 col-md-6">
+          <h3 class="text-white mb-4">Get In Touch</h3>
+          <p class="mb-2">
+            <i class="fa fa-map-marker-alt me-3"></i>123 Road, London,
+            United Kingdom
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-phone-alt me-3"></i>+44 012 345 67890
+          </p>
+          <p class="mb-2">
+            <i class="fa fa-envelope me-3"></i>info@sparkling-minds.com
+          </p>
+          <div class="d-flex pt-2">
+            <a class="btn btn-outline-light btn-social" href="http://www.twitter.com" target="_blank"><i
+                class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-light btn-social" href="http://www.facebook.com" target="_blank"><i
+                class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light btn-social" href="http://www.youtube.com" target="_blank"><i
+                class="fab fa-youtube"></i></a>
+            <a class="btn btn-outline-light btn-social" href="http://www.linkedin.com" target="_blank"><i
+                class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 class="text-white mb-4">Quick Links</h3>
+          <a class="btn btn-link text-white-50" href="{{ url_for('index') }}">About Us</a>
+          <a class="btn btn-link text-white-50" href="{{ url_for('contact_us') }}">Contact Us</a>
+          <a class="btn btn-link text-white-50" href="{{ url_for('index') }}">Our Teachers</a>
+          <a class="btn btn-link text-white-50" href="{{url_for('courses')}}">Our Courses</a>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h3 class="text-white mb-4">Photo Gallery</h3>
+          <div class="row g-2 pt-2">
+            <div class="col-4">
+              <img alt="photo" class="img-fluid rounded bg-light p-1"
+                src="{{ url_for('static', filename='img/photo4.jpg') }}" alt="" />
+            </div>
+            <div class="col-4">
+              <img alt="photo" class="img-fluid rounded bg-light p-1"
+                src="{{ url_for('static', filename='img/photo12.jpg') }}" alt="" />
+            </div>
+            <div class="col-4">
+              <img alt="photo" class="img-fluid rounded bg-light p-1"
+                src="{{ url_for('static', filename='img/photo14.jpg') }}" alt="" />
+            </div>
+            <div class="col-4">
+              <img alt="photo" class="img-fluid rounded bg-light p-1"
+                src="{{ url_for('static', filename='img/photo18.jpg') }}" alt="" />
+            </div>
+            <div class="col-4">
+              <img alt="photo" class="img-fluid rounded bg-light p-1"
+                src="{{ url_for('static', filename='img/swimming.jpg') }}" alt="" />
+            </div>
+            <div class="col-4">
+              <img alt="photo" class="img-fluid rounded bg-light p-1"
+                src="{{ url_for('static', filename='img/photo2.jpg') }}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="copyright">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            &copy;
+            <a href="#">
+              <img alt="photo" src="{{ url_for('static', filename='img/logo-2.png')}}" />
+              Sparkilng Minds Club</a>, All Right Reserved. Designed By
+            <a class="border-bottom" href="https://htmlcodex.com" target="_blank">HTML Codex</a>
+            <br />Distributed By:
+            <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <div class="footer-dev">
+              <a class="border-bottom" href="#" target="_blank">Meet the Site Developer</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer End -->
+
+  <!-- Back to Top -->
+  <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+{% endblock %}

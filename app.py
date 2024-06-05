@@ -24,22 +24,24 @@ mongo = PyMongo(app)
 # Home Page route
 @app.route("/")
 def index():
-    return render_template("index.html")
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
     if session["user"]:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
         return render_template("index.html", username=username)
+    else:
+        return render_template("index.html")
 
 
 # Courses route
 @app.route("/courses")
 def courses():
     courses = list(mongo.db.courses.find())
-    return render_template("courses.html", courses=courses)
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
     if session["user"]:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
         return render_template("courses.html", courses=courses, username=username)
+    else:
+        return render_template("courses.html", courses=courses)
 
 
 # User registration route
@@ -267,7 +269,12 @@ def delete_child(kids_id):
 # Contact Us route
 @app.route("/contact_us")
 def contact_us():
-    return render_template("contact_us.html")
+    if session["user"]:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        return render_template("contact_us.html", username=username)
+    else:
+        return render_template("contact_us.html")
 
 
 # Thank you route

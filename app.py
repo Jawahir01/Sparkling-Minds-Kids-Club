@@ -39,7 +39,8 @@ def courses():
     if session["user"]:
         username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-        return render_template("courses.html", courses=courses, username=username)
+        return render_template(
+            "courses.html", courses=courses, username=username)
     else:
         return render_template("courses.html", courses=courses)
 
@@ -114,7 +115,9 @@ def forgot_password():
             {"username": request.form.get("username").lower()})
         if existing_user:
             # Check if Security Question and answer match the user input
-            if (existing_user.get("security-question") == request.form.get("security-question")) and (existing_user.get("security-answer") == request.form.get("security-answer")):
+            if (existing_user.get("security-question") == request.form.get
+                ("security-question")) and (existing_user.get(
+                    "security-answer") == request.form.get("security-answer")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome back, {}".format(
                     request.form.get("username")))
@@ -155,7 +158,8 @@ def update_password(username):
     courses = list(mongo.db.courses.find())
     children = list(mongo.db.kids.find({'username': username}))
     flash("Your New password has been Successfully Updated")
-    return render_template("profile.html", username=username, children=children, courses=courses)
+    return render_template(
+        "profile.html", username=username, children=children, courses=courses)
 
 
 # User Profile route
@@ -166,7 +170,7 @@ def profile(username):
         {"username": session["user"]})["username"]
     courses = list(mongo.db.courses.find())
     children = list(mongo.db.kids.find({'username': username}))
-    
+
     # Initialize child variable
     child = None
 
@@ -177,8 +181,8 @@ def profile(username):
             child = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
         except InvalidId:
             flash("Invalid child ID")
-
-    return render_template("profile.html", username=username, children=children, 
+    return render_template(
+        "profile.html", username=username, children=children,
         child=child, courses=courses)
 
 
@@ -236,7 +240,8 @@ def add_child():
 # Edit Child route
 @app.route("/edit_child/<kids_id>", methods=["GET", "POST"])
 def edit_child(kids_id):
-    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     courses = list(mongo.db.courses.find())
     children = list(mongo.db.kids.find({'username': username}))
     child = mongo.db.kids.find_one({"_id": ObjectId(kids_id)})
@@ -257,6 +262,7 @@ def edit_child(kids_id):
         return redirect(url_for("profile", username=session["user"]))
 
     return redirect(url_for("profile", username=session["user"]))
+
 
 # Delete Child route
 @app.route("/delete_child/<kids_id>")
@@ -297,5 +303,5 @@ if __name__ == "__main__":
     app.run(
         host=os.environ.get("IP"),
         port=int(os.environ.get("PORT")),
-        debug=True
+        debug=False
     )

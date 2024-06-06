@@ -24,10 +24,9 @@ mongo = PyMongo(app)
 # Home Page route
 @app.route("/")
 def index():
-    session["user"] = request.form.get("username").lower()
-    if session["user"]:
-        username = mongo.db.users.find_one(
+    username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
+    if session["user"]:
         return render_template("index.html", username=username)
     else:
         return render_template("index.html")

@@ -16,7 +16,7 @@ Sparkling Minds club is a fictional club for children to join in . It reflects t
   - [The-Strategy-Plane](#the-strategy-plane)
     - [Site Goals](#site-goals)
     - [Agile Planning](#agile-planning)
-      - [User Stories](#user-stories)
+    - [User Stories](#user-stories)
 - [The-Scope-Plane](#the-scope-plane)
 - [The Structure Plane](#the-structure-plane)
     - [Features](##features)
@@ -189,6 +189,8 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
 
 
   - ### Database Design
+      ![database_design](static/img/Doc/wireframes/database_design.png)
+
     This is the basic outline of the database design and data modeling for the Sparkling Minds kids club project using MongoDB, taking in consideration the different entities and their relationships within the application:
 	- **Entities:**
 
@@ -227,13 +229,13 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
 
 	  ``` 
 			{
-  			"username": "parent1",
+  			"username": "john34",
   			"first-name": "John",
   			"last-name": "Doe",
   			"email": "john@example.com",
   			"password": "hashed_password",
-  			"security-question": "What is your favorite color?",
-  			"security-answer": "Blue"
+  			"security-question": "What is your favorite teacher's name?",
+  			"security-answer": "Mrs.Baker"
 			}
 		```
 
@@ -241,13 +243,13 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
 
 		```
 			{
- 			"username": "parent1",
+ 			"username": "John",
  			"childfname": "Alice",
   			"childlname": "Doe",
   			"date_of_birth": "2010-05-15",
   			"school_name": "ABC School",
   			"school_year": "Year 4",
-  			"child_choice": ["Football", "Art"],
+  			"child_choice": ["Football", "Englisg Course"],
   			"child_med_conditions": "None"
 			}
 			```
@@ -256,11 +258,11 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
 
 		```
 			{
-  			"course_name": "Football",
-  			"description": "Learn football skills and techniques.",
-  			"age_group": "6-12 years",
-  			"schedule": "Every Saturday, 10:00 AM - 12:00 PM",
-  			"fee": "$100/month"
+  			"course_name": "Maths Course",
+  			"Teacher": "Elena Jacobs",
+  			"School_year": "1 - 6",
+  			"course_Days": "Saturday - Sunday",
+  			"course_time": " 10:00 - 11:00 AM"
 			}
 		```
 
@@ -321,7 +323,11 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
     - Click on HTTPS
     - Copy the repository link to the clipboard.
     - Open your IDE of choice (git must be installed for the next steps)
-    - Type git clone copied-git-url into the IDE terminal.
+    - Type 
+    ```
+     git clone 'https://github.com/Jawahir01/Sparkling-Minds-Kids-Club.git'
+    ```
+    into the IDE terminal.
     
     The project will now have been cloned on your local machine for use.
 
@@ -331,7 +337,7 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
 # Credits
 - [Codeanywhere](https://codeanywhere.com/): the IDE used to develop the website.
 - [ThemeWagon](https://themewagon.com/themes/free-responsive-html5-bootstrap-5-preschool-website-template-kider/): For providing a free Responsive HTML5 Bootstrap 5 Educational Website Templates.
-- [ChatGPT](https://chat.openai.com/): was used to give more formal sentences for the website and README file.
+- [ChatGPT](https://chat.openai.com/): was used to write the update form codeand to give more formal sentences for the website and README file.
 - [Favicon.io](https://favicon.io/): was used to convert the logo image into favicon.
 - [Stack Overflow](www.stackoverflow.com) - was used to search for code related errors and bugs.
 - [jeda.ai](https://go.jeda.ai/): was used to make wireframes for the website.
@@ -342,4 +348,4 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
   - **[Ussama Youssif](https://www.linkedin.com/in/ussama-youssif-59bb94105/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)** : For his exceptional contribution and creative input in designing the logo for my project.
   - **[community-london in Slack and WhatsApp](https://app.slack.com/client/T0L30B202/CU0RJPEBF)**: for their continuous support and availability. Special thanks to [Erikas Ramanauskas](https://github.com/Erikas-Ramanauskas?tab=repositories) for his dedicated efforts in assisting with code-related issues
   - **[Student Care](https://learn.codeinstitute.net/ci_support/level5diplomainwebappdevelopment/studentcare)** :for their support.
-  - **[Gareth-McGirr]()** :a GitHub user whose Portfolio-Project-4-SizzleAndSteak project inspired me to create my README file.
+  - **[Gareth-McGirr](https://github.com/Gareth-McGirr)** :a GitHub user whose Portfolio-Project-4-SizzleAndSteak project inspired me to create my README file.

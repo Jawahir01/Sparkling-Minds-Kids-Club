@@ -312,32 +312,81 @@ The Navigation bar has the links of Home page, Features [About us, Gallery, Teac
 Test cases and results can be found in the [TESTING.md](TESTING.md) file.
 
 # Deployment
+ Whether deploying using Heroku or Localy you need to have a Github account, MongoDB Atlas account and a Heroku account to deploy this project.
 
-- ## Heroku Deployment
+For Mongo Atlas account follow the instructions [here](https://docs.atlas.mongodb.com/).
 
 
-- ## Run Locally
-  Navigate to the GitHub Repository to clone to use locally:
+  ### Fork Project
+  To use the project, navigate to this GitHub Repository [Sparkling Minds Club](https://github.com/Jawahir01/Sparkling-Minds-Kids-Club) and click the fork button which will create a duplicate of the full project in your GitHub Repository.
+  Make sure to add the env.py as shown below.
 
-    - Click on the code drop down button.
-    - Click on HTTPS
-    - Copy the repository link to the clipboard.
-    - Open your IDE of choice (git must be installed for the next steps)
-    - Type 
+  ### Run Locally
+  - Navigate to this GitHub Repository [Sparkling Minds Club](https://github.com/Jawahir01/Sparkling-Minds-Kids-Club)
+
+  - Click on the code drop down button.
+  - Click on HTTPS
+  - Copy the repository link
+  - In your prefered IDE type 
     ```
      git clone 'https://github.com/Jawahir01/Sparkling-Minds-Kids-Club.git'
     ```
-    into the IDE terminal.
     
-    The project will now have been cloned on your local machine for use.
+    The project is now cloned on your local machine.
+- Create the env python file then add it to the .gitignore file. Type:
+```
+nano env.py
+```
+- Add this code to the env.py
+```
+import os
 
-#### **The Live Link:** https://sparkling-minds-ffd249568f6d.herokuapp.com/
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("SECRET_KEY", "You-Secret-Key")
+os.environ.setdefault(
+    "MONGO_URI", "mongodb+srv://<username>:<password>@<cluster_name>-$$$$$.mongodb.net/<database_name>?retryWrites=true&w=majority")
+os.environ.setdefault("MONGO_DBNAME", "sparkling_minds_club")
+
+```
+**Note:* After finishing the deployment, set the debug to False in app.py.
+- ## Heroku Deployment
+
+To deploy into heroku, follow these steps:
+
+1. In your terminal type the command  
+      `pip freeze > requirements.txt`.
+2. Type 
+
+      `echo web: python app.py > Procfile`.
+3. Push the files into your GitHub.
+4. In [Heroku](https://dashboard.heroku.com/apps) dashboard, click "New" and give the app a name.
+5. Click "Deploy" > "Deployment method" and select GitHub.
+6. Choose the GitHub Repository.
+7. Click "Settings" > "Reveal Config Vars".
+8. Set debug to False in settings.py
+9. Set the following config:
+
+| Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 0.0.0.0
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-$$$$$.mongodb.net/<database_name>?retryWrites=true&w=majority`
+PORT | 5000
+SECRET_KEY | `<secret_key>`
+
+9. Click "Deploy".
+10. "Manual Deployment" > click "Deploy Branch".
+11. Now the site is successfully deployed.
+
+
+- #### **The Live Link:** https://sparkling-minds-ffd249568f6d.herokuapp.com/
 
 
 # Credits
 - [Codeanywhere](https://codeanywhere.com/): the IDE used to develop the website.
 - [ThemeWagon](https://themewagon.com/themes/free-responsive-html5-bootstrap-5-preschool-website-template-kider/): For providing a free Responsive HTML5 Bootstrap 5 Educational Website Templates.
-- [ChatGPT](https://chat.openai.com/): was used to write the update form codeand to give more formal sentences for the website and README file.
+- [ChatGPT](https://chat.openai.com/): was used to write the update form code and to give more formal sentences for the website and README file.
 - [Favicon.io](https://favicon.io/): was used to convert the logo image into favicon.
 - [Stack Overflow](www.stackoverflow.com) - was used to search for code related errors and bugs.
 - [jeda.ai](https://go.jeda.ai/): was used to make wireframes for the website.
@@ -348,4 +397,4 @@ Test cases and results can be found in the [TESTING.md](TESTING.md) file.
   - **[Ussama Youssif](https://www.linkedin.com/in/ussama-youssif-59bb94105/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)** : For his exceptional contribution and creative input in designing the logo for my project.
   - **[community-london in Slack and WhatsApp](https://app.slack.com/client/T0L30B202/CU0RJPEBF)**: for their continuous support and availability. Special thanks to [Erikas Ramanauskas](https://github.com/Erikas-Ramanauskas?tab=repositories) for his dedicated efforts in assisting with code-related issues
   - **[Student Care](https://learn.codeinstitute.net/ci_support/level5diplomainwebappdevelopment/studentcare)** :for their support.
-  - **[Gareth-McGirr](https://github.com/Gareth-McGirr)** :a GitHub user whose Portfolio-Project-4-SizzleAndSteak project inspired me to create my README file.
+  - **[Gareth-McGirr](https://github.com/Gareth-McGirr)** :a GitHub user whose project inspired me to create my README file.

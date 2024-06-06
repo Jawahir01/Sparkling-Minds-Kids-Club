@@ -35,20 +35,35 @@ see the below table for the results.
 
 
 - ## Validation
-    -	HTML Validation:
- Full HTML Validation Report
-No errors or warnings were found when passing through the official W3C validator. This checking was done manually by copying the view page source code (Ctrl+U) and pasting it into the validator.
-    - 	CSS Validation:
-Full CSS Validation Report
-No errors or warnings were found when passing through the official W3C (Jigsaw) .
+    -	### HTML Validation:
 
-    -	JS Validation:
-Full JS Validation Report
-No errors or warning messages were found when passing through the official JSHint validator
+    Despite the warnings and errors from the [W3C validator](https://validator.w3.org/), the application is functioning correctly; these issues stem from the use of Flask and Jinja templates, which can introduce syntax that is not recognized by standard HTML validation tools
 
-    -	Python Validation:
-Full Python Validation Report
-No errors were found when the code was passed through an online validation tool.
+    - ### CSS Validation:
+
+    no errors or warnings were found when passing through the official [W3C (Jigsaw)](https://jigsaw.w3.org/css-validator/) .
+
+    -	### JS Validation:
+    The code validation passed through the official (JSHint)[] validator and reported the followed:
+        There are 12 functions in this file.
+
+        Function with the largest signature take 1 arguments, while the median is 0.
+
+        Largest function has 19 statements in it, while the median is 2.5.
+
+        The most complex function has a cyclomatic complexity value of 7 while the median is 1.
+
+        Two warnings
+        103	'i' is already defined.
+        109	'i' is already defined.
+        One unused variable
+        92	limitCheckboxSelection
+
+    Note: limitCheckboxSelection has been used inside the html.
+
+    - #### Python Validation:
+
+    all clear and no errors were found when the code was passed through the online validation tool [ PEP8CI](https://pep8ci.herokuapp.com/) developed by code Institute.
 
 
 - ## Lighthouse Report

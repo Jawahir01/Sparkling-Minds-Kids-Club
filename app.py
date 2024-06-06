@@ -24,20 +24,24 @@ mongo = PyMongo(app)
 # Home Page route
 @app.route("/")
 def index():
-    return render_template("index.html")
-
+    if session["user"]:
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        return render_template("index.html", username=username)
+    else:
+        return render_template("index.html")
 
 # Courses route
 @app.route("/courses")
 def courses():
     courses = list(mongo.db.courses.find())
-    if session["user"]:
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-        return render_template(
-            "courses.html", courses=courses, username=username)
-    else:
-        return render_template("courses.html", courses=courses)
+    user = session.get("user")
+    if user:
+        user_data = mongo.db.users.find_one({"username": user})
+        if user_data:
+            username = user_data.get("username")
+            return render_template("courses.html", username=username)
+    return render_template("courses.html")
 
 
 # User registration route
@@ -270,13 +274,13 @@ def delete_child(kids_id):
 # Contact Us route
 @app.route("/contact_us")
 def contact_us():
-    if session["user"]:
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-        return render_template("contact_us.html", username=username)
-    else:
-        return render_template("contact_us.html")
-
+    user = session.get("user")
+    if user:
+        user_data = mongo.db.users.find_one({"username": user})
+        if user_data:
+            username = user_data.get("username")
+            return render_template("contact_us.html", username=username)
+    return render_template("contact_us.html")
 
 # Thank you route
 @app.route("/thank_you", methods=["GET", "POST"])

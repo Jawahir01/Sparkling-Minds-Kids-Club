@@ -42,8 +42,8 @@ def courses():
         user_data = mongo.db.users.find_one({"username": user})
         if user_data:
             username = user_data.get("username")
-            return render_template("courses.html", username=username)
-    return render_template("courses.html")
+            return render_template("courses.html", username=username, courses=courses)
+    return render_template("courses.html", courses=courses)
 
 
 # User registration route

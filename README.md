@@ -12,31 +12,51 @@ Sparkling Minds club is a fictional club for children to join in . It reflects t
 
 - [Sparkling Minds Club](#sparkling-minds-club)
   - [Table of Contents](#table-of-contents)
-- [User Experience Design](#user-experience-design)
-  - [The-Strategy-Plane](#the-strategy-plane)
-    - [Site Goals](#site-goals)
-    - [Agile Planning](#agile-planning)
-    - [User Stories](#user-stories)
+- [User Experience Design(UX)](#user-experience-design-ux-)
+  * [The-Strategy-Plane](#the-strategy-plane)
+    + [a. Site Goals](#a-site-goals)
 - [The-Scope-Plane](#the-scope-plane)
 - [The Structure Plane](#the-structure-plane)
-    - [Features](##features)
-  - [The Skeleton Plane](##the-skeleton-plane)
-    - [Wireframes](#wireframes)
-    - [Database Design](#database-design)
-    - [Security](#security)
-  - [The-Surface-Plane](#the-surface-plane)
-    - [Design](#design)
-    - [Colour-Scheme](#colour-scheme)
-    - [Typography](#typography)
-    - [Imagery](#imagery)
-  - [Technolgies](#technolgies)
+  * [Features](#features)
+      - [A header:](#a-header-)
+      - [A Footer:](#a-footer-)
+      - [Home page](#home-page)
+      - [Courses Page](#courses-page)
+      - [Register Page](#register-page)
+      - [Sign in Page](#sign-in-page)
+      - [Forget Password Page](#forget-password-page)
+      - [Update Password Page](#update-password-page)
+      - [Profile Page](#profile-page)
+      - [Profile Page when add Child button is clicked.](#profile-page-when-add-child-button-is-clicked)
+      - [Profile Page after a child is added.](#profile-page-after-a-child-is-added)
+      - [Profile Page when child is edited.](#profile-page-when-child-is-edited)
+      - [Contact Us Page](#contact-us-page)
+      - [Thank You Page](#thank-you-page)
+  * [Future Implementations](#future-implementations)
+  * [The Skeleton Plane](#the-skeleton-plane)
+    + [Wireframes](#wireframes)
+    + [Database Design](#database-design)
+- [The-Surface-Plane](#the-surface-plane)
+  * [Design](#design)
+    + [Colour-Scheme](#colour-scheme)
+    + [Typography](#typography)
+    + [Imagery](#imagery)
+  * [Technolgies](#technolgies)
+    + [Languages:](#languages-)
+    + [Frameworks and libraries:](#frameworks-and-libraries-)
+    + [Databases:](#databases-)
+    + [Other tools:](#other-tools-)
 - [Testing](#testing)
 - [Deployment](#deployment)
-    - [Heroku Deployment](#heroku-deployment)
-    - [Run Locally](#run-locally)
-    - [Fork Project](#fork-project)
+    + [Fork Project](#fork-project)
+    + [Run Locally](#run-locally)
+  * [Heroku Deployment](#heroku-deployment)
+      - [**The Live Link:** https://sparkling-minds-ffd249568f6d.herokuapp.com/](#--the-live-link----https---sparkling-minds-ffd249568f6dherokuappcom-)
 - [Credits](#credits)
 - [Acknowledgments](#acknowledgments)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 # User Experience Design(UX)
  - ## The-Strategy-Plane
@@ -386,10 +406,11 @@ SECRET_KEY | `<secret_key>`
 # Credits
 - [Codeanywhere](https://codeanywhere.com/): the IDE used to develop the website.
 - [ThemeWagon](https://themewagon.com/themes/free-responsive-html5-bootstrap-5-preschool-website-template-kider/): For providing a free Responsive HTML5 Bootstrap 5 Educational Website Templates.
-- [ChatGPT](https://chat.openai.com/): was used to write the update form code and to give more formal sentences for the website and README file.
+- [ChatGPT](https://chat.openai.com/): was used to write the update form code, username joind with user-icon and to give more formal sentences for the website and README file.
 - [Favicon.io](https://favicon.io/): was used to convert the logo image into favicon.
 - [Stack Overflow](www.stackoverflow.com) - was used to search for code related errors and bugs.
 - [jeda.ai](https://go.jeda.ai/): was used to make wireframes for the website.
+- [generated.photosi](https://generated.photos/human-generator): was used to generate fake photo for the football coach.
 
 # Acknowledgments
   - **[Iuliia Konovalova](https://github.com/IuliiaKonovalova)** :My Mentor Guidance at Code Institute for her professional teaching and helping throughout the project time.
